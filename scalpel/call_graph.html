@@ -46,10 +46,29 @@
                     <h1 class="modulename">
 <a href="./../scalpel.html">scalpel</a><wbr>.call_graph    </h1>
 
-                
+                        <div class="docstring"><p>A call graph depicts calling relationships between subroutines in a computer program. 
+It is an essential component in most static analysis and can be leveraged to build more sophisicated applications such as profiling, vunerability propagation and refactoring. </p>
+
+<p>Please note <a href="../scalpel.html#pycg">scalpel.pycg</a> module is a wrapper of <a href="https://pypi.org/project/pycg/">PyCG</a>. 
+It aims to construct the call graphs for given Python projects. </p>
+
+<p>The basic node can be either a function, a class or a module. 
+The edges represent calling relationships between program nodes.</p>
+</div>
+
                         <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">pycg.pycg</span> <span class="kn">import</span> <span class="n">CallGraphGenerator</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">A call graph depicts calling relationships between subroutines in a computer program. </span>
+<span class="sd">It is an essential component in most static analysis and can be leveraged to build more sophisicated applications such as profiling, vunerability propagation and refactoring. </span>
+
+<span class="sd">Please note scalpel.pycg module is a wrapper of [PyCG](https://pypi.org/project/pycg/). </span>
+<span class="sd">It aims to construct the call graphs for given Python projects. </span>
+
+<span class="sd">The basic node can be either a function, a class or a module. </span>
+<span class="sd">The edges represent calling relationships between program nodes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">pycg.pycg</span> <span class="kn">import</span> <span class="n">CallGraphGenerator</span>
 </pre></div>
 
         </details>
