@@ -40,12 +40,6 @@
                                 <a class="function" href="#SSA.__init__">SSA</a>
                         </li>
                         <li>
-                                <a class="function" href="#SSA.get_global_live_vars">get_global_live_vars</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#SSA.flatten_tuple">flatten_tuple</a>
-                        </li>
-                        <li>
                                 <a class="function" href="#SSA.get_attribute_stmts">get_attribute_stmts</a>
                         </li>
                         <li>
@@ -144,21 +138,6 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">undefined_names_from</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">global_names</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">get_global_live_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#import_dict = self.m_node.parse_import_stmts()</span>
-        <span class="c1">#def_records = self.m_node.parse_func_defs()</span>
-        <span class="c1">#def_idents = [r[&#39;name&#39;] for r in def_records if r[&#39;scope&#39;] == &#39;mod&#39;]</span>
-        <span class="c1">#self.global_live_idents = def_idents + list(import_dict.keys())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">global_live_idents</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">def</span> <span class="nf">flatten_tuple</span><span class="p">(</span><span class="n">ast_tuple</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        input: ast tuple object</span>
-<span class="sd">        return a list of elements in the given tuple</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">output</span> <span class="o">=</span><span class="p">[]</span>
-        <span class="n">first</span> <span class="o">=</span> <span class="n">ast_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">second</span> <span class="o">=</span> <span class="n">ast_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">get_attribute_stmts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmts</span><span class="p">):</span>
         <span class="n">call_stmts</span> <span class="o">=</span> <span class="p">[]</span>
@@ -219,7 +198,7 @@ futher anaysis. The module contain a single class named SSA.</p>
                 <span class="n">stored_idents</span><span class="p">,</span> <span class="n">loaded_idents</span><span class="p">,</span> <span class="n">func_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stmt_idents_ctx</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="n">const_dict</span><span class="o">=</span><span class="n">tmp_const_dict</span><span class="p">)</span> 
                 <span class="n">block_loaded_idents</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">loaded_idents</span><span class="p">]</span>
                 <span class="n">block_stored_idents</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">stored_idents</span><span class="p">]</span>
-                <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[{</span><span class="n">ident</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">loaded_idents</span><span class="p">}]</span>
+                <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[{</span><span class="n">ident</span><span class="p">:</span><span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">loaded_idents</span><span class="p">}]</span>
             <span class="n">block_const_dict</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>  <span class="o">=</span> <span class="n">tmp_const_dict</span>
         
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">all_blocks</span><span class="p">:</span>
@@ -251,7 +230,7 @@ futher anaysis. The module contain a single class named SSA.</p>
                     <span class="c1"># a list of dictions for each of idents used in this statement</span>
                     <span class="n">phi_loaded_idents</span> <span class="o">=</span> <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">ident_name_counter</span><span class="p">:</span>
-                        <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">ident</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">ident</span><span class="p">])</span>
+                        <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">ident</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">ident</span><span class="p">])</span>
                     <span class="c1">#if ident in affected_idents:</span>
                     <span class="c1">#    phi_loaded_idents = block_renamed_loaded[block.id][i]</span>
                     <span class="c1">#    if ident in phi_loaded_idents:  </span>
@@ -269,20 +248,9 @@ futher anaysis. The module contain a single class named SSA.</p>
                         <span class="c1"># place phi function here</span>
                         <span class="c1"># this var used</span>
                         <span class="k">if</span> <span class="n">af_ident</span> <span class="ow">in</span> <span class="n">phi_loaded_idents</span><span class="p">:</span>  
-                            <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">af_ident</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">af_ident</span><span class="p">])</span>
+                            <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">af_ident</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">af_ident</span><span class="p">])</span>
                                        
-        <span class="c1">#loaded_idents = block_loaded_idents[block.id]</span>
-        <span class="c1">#print(block_renamed_stored[block.id])</span>
-        <span class="c1"># now go to all ist DF nodes to rename loaded sets</span>
- <span class="c1">#      print(block_stored_idents[block.id])</span>
-        
-        <span class="c1"># TODO: rename those in the dominating nodes </span>
-        <span class="c1"># to refer to POST dominating relationships </span>
-        <span class="c1">#for b_id, phi_vals in block_renamed_loaded.items():</span>
-        <span class="c1">#    print(b_id, phi_vals)</span>
-        <span class="c1">#print(&#39;--------------------------&#39;)</span>
-        <span class="c1">#for k, v in ident_const_dict.items():</span>
-        <span class="c1">#    print(k, v.__dict__)</span>
+       
         <span class="k">return</span> <span class="n">block_renamed_loaded</span><span class="p">,</span> <span class="n">ident_const_dict</span>
 
     <span class="k">def</span> <span class="nf">get_stmt_idents_ctx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmt</span><span class="p">,</span> <span class="n">del_set</span><span class="o">=</span><span class="p">[],</span> <span class="n">const_dict</span> <span class="o">=</span> <span class="p">{}):</span>
@@ -490,21 +458,6 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">undefined_names_from</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">global_names</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">def</span> <span class="nf">get_global_live_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#import_dict = self.m_node.parse_import_stmts()</span>
-        <span class="c1">#def_records = self.m_node.parse_func_defs()</span>
-        <span class="c1">#def_idents = [r[&#39;name&#39;] for r in def_records if r[&#39;scope&#39;] == &#39;mod&#39;]</span>
-        <span class="c1">#self.global_live_idents = def_idents + list(import_dict.keys())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">global_live_idents</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">def</span> <span class="nf">flatten_tuple</span><span class="p">(</span><span class="n">ast_tuple</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        input: ast tuple object</span>
-<span class="sd">        return a list of elements in the given tuple</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">output</span> <span class="o">=</span><span class="p">[]</span>
-        <span class="n">first</span> <span class="o">=</span> <span class="n">ast_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">second</span> <span class="o">=</span> <span class="n">ast_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">get_attribute_stmts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmts</span><span class="p">):</span>
         <span class="n">call_stmts</span> <span class="o">=</span> <span class="p">[]</span>
@@ -565,7 +518,7 @@ futher anaysis. The module contain a single class named SSA.</p>
                 <span class="n">stored_idents</span><span class="p">,</span> <span class="n">loaded_idents</span><span class="p">,</span> <span class="n">func_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stmt_idents_ctx</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="n">const_dict</span><span class="o">=</span><span class="n">tmp_const_dict</span><span class="p">)</span> 
                 <span class="n">block_loaded_idents</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">loaded_idents</span><span class="p">]</span>
                 <span class="n">block_stored_idents</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">stored_idents</span><span class="p">]</span>
-                <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[{</span><span class="n">ident</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">loaded_idents</span><span class="p">}]</span>
+                <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[{</span><span class="n">ident</span><span class="p">:</span><span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">loaded_idents</span><span class="p">}]</span>
             <span class="n">block_const_dict</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>  <span class="o">=</span> <span class="n">tmp_const_dict</span>
         
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">all_blocks</span><span class="p">:</span>
@@ -597,7 +550,7 @@ futher anaysis. The module contain a single class named SSA.</p>
                     <span class="c1"># a list of dictions for each of idents used in this statement</span>
                     <span class="n">phi_loaded_idents</span> <span class="o">=</span> <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">ident_name_counter</span><span class="p">:</span>
-                        <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">ident</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">ident</span><span class="p">])</span>
+                        <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">ident</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">ident</span><span class="p">])</span>
                     <span class="c1">#if ident in affected_idents:</span>
                     <span class="c1">#    phi_loaded_idents = block_renamed_loaded[block.id][i]</span>
                     <span class="c1">#    if ident in phi_loaded_idents:  </span>
@@ -615,20 +568,9 @@ futher anaysis. The module contain a single class named SSA.</p>
                         <span class="c1"># place phi function here</span>
                         <span class="c1"># this var used</span>
                         <span class="k">if</span> <span class="n">af_ident</span> <span class="ow">in</span> <span class="n">phi_loaded_idents</span><span class="p">:</span>  
-                            <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">af_ident</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">af_ident</span><span class="p">])</span>
+                            <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">af_ident</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">af_ident</span><span class="p">])</span>
                                        
-        <span class="c1">#loaded_idents = block_loaded_idents[block.id]</span>
-        <span class="c1">#print(block_renamed_stored[block.id])</span>
-        <span class="c1"># now go to all ist DF nodes to rename loaded sets</span>
- <span class="c1">#      print(block_stored_idents[block.id])</span>
-        
-        <span class="c1"># TODO: rename those in the dominating nodes </span>
-        <span class="c1"># to refer to POST dominating relationships </span>
-        <span class="c1">#for b_id, phi_vals in block_renamed_loaded.items():</span>
-        <span class="c1">#    print(b_id, phi_vals)</span>
-        <span class="c1">#print(&#39;--------------------------&#39;)</span>
-        <span class="c1">#for k, v in ident_const_dict.items():</span>
-        <span class="c1">#    print(k, v.__dict__)</span>
+       
         <span class="k">return</span> <span class="n">block_renamed_loaded</span><span class="p">,</span> <span class="n">ident_const_dict</span>
 
     <span class="k">def</span> <span class="nf">get_stmt_idents_ctx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmt</span><span class="p">,</span> <span class="n">del_set</span><span class="o">=</span><span class="p">[],</span> <span class="n">const_dict</span> <span class="o">=</span> <span class="p">{}):</span>
@@ -815,57 +757,6 @@ futher anaysis. The module contain a single class named SSA.</p>
 
 
                             </div>
-                            <div id="SSA.get_global_live_vars" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#SSA.get_global_live_vars">#&nbsp;&nbsp</a>
-
-        
-            <span class="def">def</span>
-            <span class="name">get_global_live_vars</span><span class="signature">(self)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_global_live_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#import_dict = self.m_node.parse_import_stmts()</span>
-        <span class="c1">#def_records = self.m_node.parse_func_defs()</span>
-        <span class="c1">#def_idents = [r[&#39;name&#39;] for r in def_records if r[&#39;scope&#39;] == &#39;mod&#39;]</span>
-        <span class="c1">#self.global_live_idents = def_idents + list(import_dict.keys())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">global_live_idents</span> <span class="o">=</span> <span class="p">[]</span>
-</pre></div>
-
-        </details>
-
-    
-
-                            </div>
-                            <div id="SSA.flatten_tuple" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#SSA.flatten_tuple">#&nbsp;&nbsp</a>
-
-        
-            <span class="def">def</span>
-            <span class="name">flatten_tuple</span><span class="signature">(ast_tuple)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">flatten_tuple</span><span class="p">(</span><span class="n">ast_tuple</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        input: ast tuple object</span>
-<span class="sd">        return a list of elements in the given tuple</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">output</span> <span class="o">=</span><span class="p">[]</span>
-        <span class="n">first</span> <span class="o">=</span> <span class="n">ast_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">second</span> <span class="o">=</span> <span class="n">ast_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-        </details>
-
-            <div class="docstring"><p>input: ast tuple object
-return a list of elements in the given tuple</p>
-</div>
-
-
-                            </div>
                             <div id="SSA.get_attribute_stmts" class="classattr">
                                         <div class="attr function"><a class="headerlink" href="#SSA.get_attribute_stmts">#&nbsp;&nbsp</a>
 
@@ -970,7 +861,7 @@ Args:
                 <span class="n">stored_idents</span><span class="p">,</span> <span class="n">loaded_idents</span><span class="p">,</span> <span class="n">func_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stmt_idents_ctx</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="n">const_dict</span><span class="o">=</span><span class="n">tmp_const_dict</span><span class="p">)</span> 
                 <span class="n">block_loaded_idents</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">loaded_idents</span><span class="p">]</span>
                 <span class="n">block_stored_idents</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">stored_idents</span><span class="p">]</span>
-                <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[{</span><span class="n">ident</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">loaded_idents</span><span class="p">}]</span>
+                <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[{</span><span class="n">ident</span><span class="p">:</span><span class="nb">set</span><span class="p">()</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">loaded_idents</span><span class="p">}]</span>
             <span class="n">block_const_dict</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>  <span class="o">=</span> <span class="n">tmp_const_dict</span>
         
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">all_blocks</span><span class="p">:</span>
@@ -1002,7 +893,7 @@ Args:
                     <span class="c1"># a list of dictions for each of idents used in this statement</span>
                     <span class="n">phi_loaded_idents</span> <span class="o">=</span> <span class="n">block_renamed_loaded</span><span class="p">[</span><span class="n">block</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">ident_name_counter</span><span class="p">:</span>
-                        <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">ident</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">ident</span><span class="p">])</span>
+                        <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">ident</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">ident</span><span class="p">])</span>
                     <span class="c1">#if ident in affected_idents:</span>
                     <span class="c1">#    phi_loaded_idents = block_renamed_loaded[block.id][i]</span>
                     <span class="c1">#    if ident in phi_loaded_idents:  </span>
@@ -1020,20 +911,9 @@ Args:
                         <span class="c1"># place phi function here</span>
                         <span class="c1"># this var used</span>
                         <span class="k">if</span> <span class="n">af_ident</span> <span class="ow">in</span> <span class="n">phi_loaded_idents</span><span class="p">:</span>  
-                            <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">af_ident</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">af_ident</span><span class="p">])</span>
+                            <span class="n">phi_loaded_idents</span><span class="p">[</span><span class="n">af_ident</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ident_name_counter</span><span class="p">[</span><span class="n">af_ident</span><span class="p">])</span>
                                        
-        <span class="c1">#loaded_idents = block_loaded_idents[block.id]</span>
-        <span class="c1">#print(block_renamed_stored[block.id])</span>
-        <span class="c1"># now go to all ist DF nodes to rename loaded sets</span>
- <span class="c1">#      print(block_stored_idents[block.id])</span>
-        
-        <span class="c1"># TODO: rename those in the dominating nodes </span>
-        <span class="c1"># to refer to POST dominating relationships </span>
-        <span class="c1">#for b_id, phi_vals in block_renamed_loaded.items():</span>
-        <span class="c1">#    print(b_id, phi_vals)</span>
-        <span class="c1">#print(&#39;--------------------------&#39;)</span>
-        <span class="c1">#for k, v in ident_const_dict.items():</span>
-        <span class="c1">#    print(k, v.__dict__)</span>
+       
         <span class="k">return</span> <span class="n">block_renamed_loaded</span><span class="p">,</span> <span class="n">ident_const_dict</span>
 </pre></div>
 

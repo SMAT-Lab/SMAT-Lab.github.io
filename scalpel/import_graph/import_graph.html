@@ -125,8 +125,18 @@
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">ImportGraph</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Import Graph class is a data structure that allows users to manipulate different files under a Python project. </span>
+<span class="sd">    It leverage import relations in each of source files. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_point</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        entry_point: the top level folder path such as &quot;my-python-projects/homework1&quot;.</span>
+<span class="sd">        The argument must not endswith slash!</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># entry_point is the top level module folder </span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span> <span class="o">=</span> <span class="n">entry_point</span>
         <span class="c1"># note that the entry_point must not ends with slash. The recommended one is &quot;a/b/c.py&quot;</span>
@@ -157,7 +167,9 @@
               
 
     <span class="k">def</span> <span class="nf">build_dir_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># to build enhanced directory tree</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To build enhanced directory tree for futher anaysis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
         <span class="n">working_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
@@ -165,6 +177,9 @@
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">get_leaf_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To return all the leaf nodes in this tree. Each of leaf nodes represents a single Python script.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">leaf_nodes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">working_queue</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">]</span>
         <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">working_queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -179,6 +194,13 @@
      
         
     <span class="k">def</span> <span class="nf">go_to_that_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cur_node</span><span class="p">,</span> <span class="n">visit_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a particular node from the tree from the current node given a visit path from import statement. </span>
+<span class="sd">        For instance,  a visit path of [example, module_a, func] means, if we can locate the function definition `func` from module_a under example folder. </span>
+<span class="sd">        The function tries to locate the given path using both relative and absolute import path. </span>
+<span class="sd">        Args:</span>
+<span class="sd">        visit_path: a list of names that represent different level python modules.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">route_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">visit_path</span><span class="p">)</span>
         <span class="n">tmp_node</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">route_length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -216,6 +238,12 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">parse_import</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To parse import statements from the AST tree</span>
+<span class="sd">        Args:</span>
+<span class="sd">        tree: Python AST object</span>
+<span class="sd">        Returns: an import map data structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">module_item_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ast</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
@@ -237,7 +265,12 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">extract_class_from_source</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To parse import statements from the AST tree</span>
+<span class="sd">        Args:</span>
+<span class="sd">        source: source code text</span>
+<span class="sd">        Returns: class/function definitions, ast tree and alias pairs </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>
         <span class="n">visitor</span> <span class="o">=</span> <span class="n">SourceVisitor</span><span class="p">()</span>
         <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
@@ -246,6 +279,12 @@
     
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">leaf2root</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To generate the full path to the top level module from the given node. </span>
+<span class="sd">        Args:</span>
+<span class="sd">        node: the tree node </span>
+<span class="sd">        Returns: the full path name in the form of dotted string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tmp_node</span> <span class="o">=</span> <span class="n">node</span>
         <span class="n">path_to_root</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># not init.py</span>
@@ -263,6 +302,9 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_child_by_name</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a child node using node name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">ch</span>
@@ -270,6 +312,9 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_node_by_name</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a  node using node name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.py&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">node</span>
@@ -361,8 +406,18 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">ImportGraph</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Import Graph class is a data structure that allows users to manipulate different files under a Python project. </span>
+<span class="sd">    It leverage import relations in each of source files. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_point</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        entry_point: the top level folder path such as &quot;my-python-projects/homework1&quot;.</span>
+<span class="sd">        The argument must not endswith slash!</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># entry_point is the top level module folder </span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span> <span class="o">=</span> <span class="n">entry_point</span>
         <span class="c1"># note that the entry_point must not ends with slash. The recommended one is &quot;a/b/c.py&quot;</span>
@@ -393,7 +448,9 @@
               
 
     <span class="k">def</span> <span class="nf">build_dir_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># to build enhanced directory tree</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To build enhanced directory tree for futher anaysis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
         <span class="n">working_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
@@ -401,6 +458,9 @@
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">cwd</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">get_leaf_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To return all the leaf nodes in this tree. Each of leaf nodes represents a single Python script.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">leaf_nodes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">working_queue</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">]</span>
         <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">working_queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -415,6 +475,13 @@
      
         
     <span class="k">def</span> <span class="nf">go_to_that_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cur_node</span><span class="p">,</span> <span class="n">visit_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a particular node from the tree from the current node given a visit path from import statement. </span>
+<span class="sd">        For instance,  a visit path of [example, module_a, func] means, if we can locate the function definition `func` from module_a under example folder. </span>
+<span class="sd">        The function tries to locate the given path using both relative and absolute import path. </span>
+<span class="sd">        Args:</span>
+<span class="sd">        visit_path: a list of names that represent different level python modules.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">route_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">visit_path</span><span class="p">)</span>
         <span class="n">tmp_node</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">route_length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -452,6 +519,12 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">parse_import</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To parse import statements from the AST tree</span>
+<span class="sd">        Args:</span>
+<span class="sd">        tree: Python AST object</span>
+<span class="sd">        Returns: an import map data structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">module_item_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ast</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
@@ -473,7 +546,12 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">extract_class_from_source</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To parse import statements from the AST tree</span>
+<span class="sd">        Args:</span>
+<span class="sd">        source: source code text</span>
+<span class="sd">        Returns: class/function definitions, ast tree and alias pairs </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>
         <span class="n">visitor</span> <span class="o">=</span> <span class="n">SourceVisitor</span><span class="p">()</span>
         <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
@@ -482,6 +560,12 @@
     
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">leaf2root</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To generate the full path to the top level module from the given node. </span>
+<span class="sd">        Args:</span>
+<span class="sd">        node: the tree node </span>
+<span class="sd">        Returns: the full path name in the form of dotted string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tmp_node</span> <span class="o">=</span> <span class="n">node</span>
         <span class="n">path_to_root</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># not init.py</span>
@@ -499,6 +583,9 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_child_by_name</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a child node using node name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">ch</span>
@@ -506,6 +593,9 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_node_by_name</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a  node using node name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.py&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">node</span>
@@ -514,7 +604,10 @@
 
         </details>
 
-    
+            <div class="docstring"><p>The Import Graph class is a data structure that allows users to manipulate different files under a Python project. 
+It leverage import relations in each of source files.</p>
+</div>
+
 
                             <div id="ImportGraph.__init__" class="classattr">
                                         <div class="attr function"><a class="headerlink" href="#ImportGraph.__init__">#&nbsp;&nbsp</a>
@@ -526,6 +619,12 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entry_point</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        entry_point: the top level folder path such as &quot;my-python-projects/homework1&quot;.</span>
+<span class="sd">        The argument must not endswith slash!</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># entry_point is the top level module folder </span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span> <span class="o">=</span> <span class="n">entry_point</span>
         <span class="c1"># note that the entry_point must not ends with slash. The recommended one is &quot;a/b/c.py&quot;</span>
@@ -534,7 +633,12 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To constuct a import graph.
+Args:
+entry_point: the top level folder path such as "my-python-projects/homework1".
+The argument must not endswith slash!</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.build_dir_tree" class="classattr">
@@ -548,7 +652,9 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">build_dir_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># to build enhanced directory tree</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To build enhanced directory tree for futher anaysis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
         <span class="n">working_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
@@ -558,7 +664,9 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To build enhanced directory tree for futher anaysis</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.get_leaf_nodes" class="classattr">
@@ -572,6 +680,9 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_leaf_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To return all the leaf nodes in this tree. Each of leaf nodes represents a single Python script.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">leaf_nodes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">working_queue</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">]</span>
         <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">working_queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -587,7 +698,9 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To return all the leaf nodes in this tree. Each of leaf nodes represents a single Python script.</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.go_to_that_node" class="classattr">
@@ -601,6 +714,13 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">go_to_that_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cur_node</span><span class="p">,</span> <span class="n">visit_path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a particular node from the tree from the current node given a visit path from import statement. </span>
+<span class="sd">        For instance,  a visit path of [example, module_a, func] means, if we can locate the function definition `func` from module_a under example folder. </span>
+<span class="sd">        The function tries to locate the given path using both relative and absolute import path. </span>
+<span class="sd">        Args:</span>
+<span class="sd">        visit_path: a list of names that represent different level python modules.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">route_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">visit_path</span><span class="p">)</span>
         <span class="n">tmp_node</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="n">route_length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -639,7 +759,13 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To locate a particular node from the tree from the current node given a visit path from import statement. 
+For instance,  a visit path of [example, module_a, func] means, if we can locate the function definition <code>func</code> from module_a under example folder. 
+The function tries to locate the given path using both relative and absolute import path. 
+Args:
+visit_path: a list of names that represent different level python modules.</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.parse_import" class="classattr">
@@ -655,6 +781,12 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">parse_import</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To parse import statements from the AST tree</span>
+<span class="sd">        Args:</span>
+<span class="sd">        tree: Python AST object</span>
+<span class="sd">        Returns: an import map data structure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">module_item_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ast</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
@@ -677,7 +809,12 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To parse import statements from the AST tree
+Args:
+tree: Python AST object
+Returns: an import map data structure</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.extract_class_from_source" class="classattr">
@@ -693,7 +830,12 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">extract_class_from_source</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
-        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To parse import statements from the AST tree</span>
+<span class="sd">        Args:</span>
+<span class="sd">        source: source code text</span>
+<span class="sd">        Returns: class/function definitions, ast tree and alias pairs </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tree</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>
         <span class="n">visitor</span> <span class="o">=</span> <span class="n">SourceVisitor</span><span class="p">()</span>
         <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
@@ -703,7 +845,12 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To parse import statements from the AST tree
+Args:
+source: source code text
+Returns: class/function definitions, ast tree and alias pairs</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.leaf2root" class="classattr">
@@ -719,6 +866,12 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">leaf2root</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To generate the full path to the top level module from the given node. </span>
+<span class="sd">        Args:</span>
+<span class="sd">        node: the tree node </span>
+<span class="sd">        Returns: the full path name in the form of dotted string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tmp_node</span> <span class="o">=</span> <span class="n">node</span>
         <span class="n">path_to_root</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># not init.py</span>
@@ -737,7 +890,12 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To generate the full path to the top level module from the given node. 
+Args:
+node: the tree node 
+Returns: the full path name in the form of dotted string.</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.find_child_by_name" class="classattr">
@@ -753,6 +911,9 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_child_by_name</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a child node using node name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">ch</span>
@@ -761,7 +922,9 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To locate a child node using node name</p>
+</div>
+
 
                             </div>
                             <div id="ImportGraph.find_node_by_name" class="classattr">
@@ -777,6 +940,9 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">find_node_by_name</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To locate a  node using node name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.py&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">node</span>
@@ -785,7 +951,9 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To locate a  node using node name</p>
+</div>
+
 
                             </div>
                 </section>
