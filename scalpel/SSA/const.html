@@ -254,6 +254,15 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="k">return</span> <span class="n">block_renamed_loaded</span><span class="p">,</span> <span class="n">ident_const_dict</span>
 
     <span class="k">def</span> <span class="nf">get_stmt_idents_ctx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmt</span><span class="p">,</span> <span class="n">del_set</span><span class="o">=</span><span class="p">[],</span> <span class="n">const_dict</span> <span class="o">=</span> <span class="p">{}):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract the contexual information of each of identifiers. </span>
+<span class="sd">        For assignment statements, the assigned values for each of variables will be stored.</span>
+<span class="sd">        In addition, the del_set will store all deleted variables. </span>
+<span class="sd">        Args:</span>
+<span class="sd">            stmt: statement from AST trees.</span>
+<span class="sd">            del_set: deleted identifiers</span>
+<span class="sd">            const_dict: a mapping relationship between variables and their assigned values in this statement</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># if this is a definition of class/function, ignore</span>
         <span class="n">stored_idents</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">loaded_idents</span> <span class="o">=</span> <span class="p">[]</span>
@@ -279,12 +288,6 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">FunctionDef</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">AsyncFunctionDef</span><span class="p">)):</span>
             <span class="n">stored_idents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stmt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">func_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stmt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-            <span class="c1">#for arg in stmt.args.args: </span>
-            <span class="c1">#    if isinstance(arg.annotation, ast.Name):</span>
-            <span class="c1">#        loaded_idents.append(arg.annotation.id)</span>
-            <span class="c1">#    if isinstance(arg.annotation, ast.Attribute):</span>
-            <span class="c1">#        if isinstance(arg.annotation.value, ast.Name):</span>
-            <span class="c1">#            loaded_idents.append(arg.annotation.value.id)</span>
             <span class="n">new_stmt</span> <span class="o">=</span> <span class="n">stmt</span>
             <span class="n">new_stmt</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">ident_info</span> <span class="o">=</span> <span class="n">get_vars</span><span class="p">(</span><span class="n">new_stmt</span><span class="p">)</span>
@@ -357,12 +360,15 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="k">pass</span>
 
     <span class="k">def</span> <span class="nf">print_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">):</span>
-        <span class="c1">#for stmt in block.statements:</span>
-        <span class="c1">#print(block.get_source())</span>
         <span class="k">return</span> <span class="n">block</span><span class="o">.</span><span class="n">get_source</span><span class="p">()</span>
 
     <span class="c1"># compute the dominators </span>
     <span class="k">def</span> <span class="nf">compute_idom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ssa_blocks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute immediate immediate dominators for each of blocks</span>
+<span class="sd">        Args:</span>
+<span class="sd">            ssa_blocks: blocks from a control flow graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># construct the Graph</span>
         <span class="n">entry_block</span> <span class="o">=</span> <span class="n">ssa_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -378,6 +384,11 @@ futher anaysis. The module contain a single class named SSA.</p>
 
     <span class="c1"># compute dominance frontiers</span>
     <span class="k">def</span> <span class="nf">compute_DF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ssa_blocks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute dominating frontiers for each of blocks</span>
+<span class="sd">        Args:</span>
+<span class="sd">            ssa_blocks: blocks from a control flow graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># construct the Graph</span>
         <span class="n">entry_block</span> <span class="o">=</span> <span class="n">ssa_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -574,6 +585,15 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="k">return</span> <span class="n">block_renamed_loaded</span><span class="p">,</span> <span class="n">ident_const_dict</span>
 
     <span class="k">def</span> <span class="nf">get_stmt_idents_ctx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmt</span><span class="p">,</span> <span class="n">del_set</span><span class="o">=</span><span class="p">[],</span> <span class="n">const_dict</span> <span class="o">=</span> <span class="p">{}):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract the contexual information of each of identifiers. </span>
+<span class="sd">        For assignment statements, the assigned values for each of variables will be stored.</span>
+<span class="sd">        In addition, the del_set will store all deleted variables. </span>
+<span class="sd">        Args:</span>
+<span class="sd">            stmt: statement from AST trees.</span>
+<span class="sd">            del_set: deleted identifiers</span>
+<span class="sd">            const_dict: a mapping relationship between variables and their assigned values in this statement</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># if this is a definition of class/function, ignore</span>
         <span class="n">stored_idents</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">loaded_idents</span> <span class="o">=</span> <span class="p">[]</span>
@@ -599,12 +619,6 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">FunctionDef</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">AsyncFunctionDef</span><span class="p">)):</span>
             <span class="n">stored_idents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stmt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">func_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stmt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-            <span class="c1">#for arg in stmt.args.args: </span>
-            <span class="c1">#    if isinstance(arg.annotation, ast.Name):</span>
-            <span class="c1">#        loaded_idents.append(arg.annotation.id)</span>
-            <span class="c1">#    if isinstance(arg.annotation, ast.Attribute):</span>
-            <span class="c1">#        if isinstance(arg.annotation.value, ast.Name):</span>
-            <span class="c1">#            loaded_idents.append(arg.annotation.value.id)</span>
             <span class="n">new_stmt</span> <span class="o">=</span> <span class="n">stmt</span>
             <span class="n">new_stmt</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">ident_info</span> <span class="o">=</span> <span class="n">get_vars</span><span class="p">(</span><span class="n">new_stmt</span><span class="p">)</span>
@@ -677,12 +691,15 @@ futher anaysis. The module contain a single class named SSA.</p>
         <span class="k">pass</span>
 
     <span class="k">def</span> <span class="nf">print_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">):</span>
-        <span class="c1">#for stmt in block.statements:</span>
-        <span class="c1">#print(block.get_source())</span>
         <span class="k">return</span> <span class="n">block</span><span class="o">.</span><span class="n">get_source</span><span class="p">()</span>
 
     <span class="c1"># compute the dominators </span>
     <span class="k">def</span> <span class="nf">compute_idom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ssa_blocks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute immediate immediate dominators for each of blocks</span>
+<span class="sd">        Args:</span>
+<span class="sd">            ssa_blocks: blocks from a control flow graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># construct the Graph</span>
         <span class="n">entry_block</span> <span class="o">=</span> <span class="n">ssa_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -698,6 +715,11 @@ futher anaysis. The module contain a single class named SSA.</p>
 
     <span class="c1"># compute dominance frontiers</span>
     <span class="k">def</span> <span class="nf">compute_DF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ssa_blocks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute dominating frontiers for each of blocks</span>
+<span class="sd">        Args:</span>
+<span class="sd">            ssa_blocks: blocks from a control flow graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># construct the Graph</span>
         <span class="n">entry_block</span> <span class="o">=</span> <span class="n">ssa_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -945,6 +967,15 @@ step2: rename variables so only one definition per name</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_stmt_idents_ctx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stmt</span><span class="p">,</span> <span class="n">del_set</span><span class="o">=</span><span class="p">[],</span> <span class="n">const_dict</span> <span class="o">=</span> <span class="p">{}):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract the contexual information of each of identifiers. </span>
+<span class="sd">        For assignment statements, the assigned values for each of variables will be stored.</span>
+<span class="sd">        In addition, the del_set will store all deleted variables. </span>
+<span class="sd">        Args:</span>
+<span class="sd">            stmt: statement from AST trees.</span>
+<span class="sd">            del_set: deleted identifiers</span>
+<span class="sd">            const_dict: a mapping relationship between variables and their assigned values in this statement</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># if this is a definition of class/function, ignore</span>
         <span class="n">stored_idents</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">loaded_idents</span> <span class="o">=</span> <span class="p">[]</span>
@@ -970,12 +1001,6 @@ step2: rename variables so only one definition per name</p>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stmt</span><span class="p">,</span> <span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">FunctionDef</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">AsyncFunctionDef</span><span class="p">)):</span>
             <span class="n">stored_idents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stmt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
             <span class="n">func_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stmt</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-            <span class="c1">#for arg in stmt.args.args: </span>
-            <span class="c1">#    if isinstance(arg.annotation, ast.Name):</span>
-            <span class="c1">#        loaded_idents.append(arg.annotation.id)</span>
-            <span class="c1">#    if isinstance(arg.annotation, ast.Attribute):</span>
-            <span class="c1">#        if isinstance(arg.annotation.value, ast.Name):</span>
-            <span class="c1">#            loaded_idents.append(arg.annotation.value.id)</span>
             <span class="n">new_stmt</span> <span class="o">=</span> <span class="n">stmt</span>
             <span class="n">new_stmt</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">ident_info</span> <span class="o">=</span> <span class="n">get_vars</span><span class="p">(</span><span class="n">new_stmt</span><span class="p">)</span>
@@ -1046,7 +1071,15 @@ step2: rename variables so only one definition per name</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Extract the contexual information of each of identifiers. 
+For assignment statements, the assigned values for each of variables will be stored.
+In addition, the del_set will store all deleted variables. 
+Args:
+    stmt: statement from AST trees.
+    del_set: deleted identifiers
+    const_dict: a mapping relationship between variables and their assigned values in this statement</p>
+</div>
+
 
                             </div>
                             <div id="SSA.to_json" class="classattr">
@@ -1079,8 +1112,6 @@ step2: rename variables so only one definition per name</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">print_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">):</span>
-        <span class="c1">#for stmt in block.statements:</span>
-        <span class="c1">#print(block.get_source())</span>
         <span class="k">return</span> <span class="n">block</span><span class="o">.</span><span class="n">get_source</span><span class="p">()</span>
 </pre></div>
 
@@ -1100,6 +1131,11 @@ step2: rename variables so only one definition per name</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">compute_idom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ssa_blocks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute immediate immediate dominators for each of blocks</span>
+<span class="sd">        Args:</span>
+<span class="sd">            ssa_blocks: blocks from a control flow graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># construct the Graph</span>
         <span class="n">entry_block</span> <span class="o">=</span> <span class="n">ssa_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -1116,7 +1152,11 @@ step2: rename variables so only one definition per name</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Compute immediate immediate dominators for each of blocks
+Args:
+    ssa_blocks: blocks from a control flow graph.</p>
+</div>
+
 
                             </div>
                             <div id="SSA.compute_DF" class="classattr">
@@ -1130,6 +1170,11 @@ step2: rename variables so only one definition per name</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">compute_DF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ssa_blocks</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute dominating frontiers for each of blocks</span>
+<span class="sd">        Args:</span>
+<span class="sd">            ssa_blocks: blocks from a control flow graph.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># construct the Graph</span>
         <span class="n">entry_block</span> <span class="o">=</span> <span class="n">ssa_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -1146,7 +1191,11 @@ step2: rename variables so only one definition per name</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Compute dominating frontiers for each of blocks
+Args:
+    ssa_blocks: blocks from a control flow graph.</p>
+</div>
+
 
                             </div>
                 </section>
