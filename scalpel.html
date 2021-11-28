@@ -145,12 +145,25 @@ everybody and reusable in various contexts.</p>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;const&quot;</span><span class="p">]</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Static Single Assignment (SSA) is a technique of IR in the compiling thoery, it also shows great benefits to static anaysis tasks such as constant propagation, dead code elimination and etc.</span>
+<span class="sd">Constant propagation is also a matured technique in static anaysis. </span>
+<span class="sd">It is the process of evaluating or recognizing the actual constant values or expressions at a particular program point. This is realized by utilizing control flow and data flow information. Determining the possible values for variables before runtime gives great benefits to software anaysis. </span>
+<span class="sd">For instance, with constant value propagation, we can detect and remove dead code or perfrom type checking.</span>
+<span class="sd">In scalpel, we implement constant propagation along with the SSA for execution efficiency.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;const&quot;</span><span class="p">]</span>
 </pre></div>
 
         </details>
 
-    
+            <div class="docstring"><p>Static Single Assignment (SSA) is a technique of IR in the compiling thoery, it also shows great benefits to static anaysis tasks such as constant propagation, dead code elimination and etc.
+Constant propagation is also a matured technique in static anaysis. 
+It is the process of evaluating or recognizing the actual constant values or expressions at a particular program point. This is realized by utilizing control flow and data flow information. Determining the possible values for variables before runtime gives great benefits to software anaysis. 
+For instance, with constant value propagation, we can detect and remove dead code or perfrom type checking.
+In scalpel, we implement constant propagation along with the SSA for execution efficiency.</p>
+</div>
+
 
                 </section>
                 <section id="core">
@@ -215,31 +228,33 @@ All the leaf nodes in the import graph can be processed future.</p>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">The objective of rewriting module of Scalple is to provide APIs that allow users to rewrite their code implenmentation. </span>
+<span class="sd">This can be used for various purposes such as code desugaring (removing code sugar usages), testing and code instrumentation.</span>
+<span class="sd">Code rewriting can bring great benefits such as API extraction and dynamic testing.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">ast</span>
 <span class="kn">import</span> <span class="nn">astor</span>  
 
 <span class="kn">from</span> <span class="nn">scalpel.core.module_graph</span> <span class="kn">import</span> <span class="n">MNode</span><span class="p">,</span> <span class="n">ModuleGraph</span><span class="p">,</span> <span class="n">UnitWalker</span>
 
-<span class="sd">&quot;&quot;&quot; In python there are in total 23 statements to be considered</span>
-<span class="sd"># the user must specify the match pattern as well as insert pattern</span>
-<span class="sd"># for instance.</span>
-<span class="sd"># it can be  Call - &gt;  another_callname for instance</span>
-<span class="sd"># the given new stmt must be clearly linked to the original stmt if it needs</span>
-<span class="sd"># such information</span>
-<span class="sd"># for example, if the we have an assignment named a = 10</span>
-<span class="sd"># then we need to consturct an output stmt as print(a)</span>
-<span class="sd"># then the new pattern for the output should be Callstmt:args = [stmt.left[0]]</span>
-<span class="sd"># now the first step is to insert an stmt</span>
-<span class="sd"># the second step is to think about how to write template rules</span>
-<span class="sd"># make it easy, format string! such as the new stmt =</span>
-<span class="sd"># &quot;print(&quot;&quot;,&quot;&quot;).format(stmt.targets[0])</span>
-<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="k">class</span> <span class="nc">Rewriter</span><span class="p">:</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The rewriter class contains a set of static methods. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">rule_func</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        src: the source code to be rewritten</span>
+<span class="sd">        rule_func: the function that should be applied for each of statements. </span>
+<span class="sd">        The value of rule_func must not be None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">rule_func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;rule_func cannot be None type!&quot;</span><span class="p">)</span>
             
@@ -255,13 +270,14 @@ All the leaf nodes in the import graph can be processed future.</p>
         <span class="n">new_src</span> <span class="o">=</span> <span class="n">astor</span><span class="o">.</span><span class="n">to_source</span><span class="p">(</span><span class="n">new_ast</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_src</span> 
 
-<span class="c1"># here is the implementation of code rewriter at AST node level.</span>
+
 <span class="k">class</span> <span class="nc">ASTRewriter</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeTransformer</span><span class="p">):</span>
-    <span class="c1">#def __init__(self,src, pattern, new_stmt):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Here is the implementation of code rewriter at AST node level.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+  
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">):</span>
-        <span class="c1"># pattern</span>
-<span class="c1">#        self.pattern = pattern</span>
-<span class="c1">#        self.new_stmt = new_stmt</span>
+  
         <span class="bp">self</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="n">src</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>
@@ -499,7 +515,11 @@ All the leaf nodes in the import graph can be processed future.</p>
 
         </details>
 
-    
+            <div class="docstring"><p>The objective of rewriting module of Scalple is to provide APIs that allow users to rewrite their code implenmentation. 
+This can be used for various purposes such as code desugaring (removing code sugar usages), testing and code instrumentation.
+Code rewriting can bring great benefits such as API extraction and dynamic testing.</p>
+</div>
+
 
                 </section>
     </main>

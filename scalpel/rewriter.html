@@ -178,34 +178,40 @@
                     <h1 class="modulename">
 <a href="./../scalpel.html">scalpel</a><wbr>.rewriter    </h1>
 
-                
+                        <div class="docstring"><p>The objective of rewriting module of Scalple is to provide APIs that allow users to rewrite their code implenmentation. 
+This can be used for various purposes such as code desugaring (removing code sugar usages), testing and code instrumentation.
+Code rewriting can bring great benefits such as API extraction and dynamic testing.</p>
+</div>
+
                         <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">The objective of rewriting module of Scalple is to provide APIs that allow users to rewrite their code implenmentation. </span>
+<span class="sd">This can be used for various purposes such as code desugaring (removing code sugar usages), testing and code instrumentation.</span>
+<span class="sd">Code rewriting can bring great benefits such as API extraction and dynamic testing.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">ast</span>
 <span class="kn">import</span> <span class="nn">astor</span>  
 
 <span class="kn">from</span> <span class="nn">scalpel.core.module_graph</span> <span class="kn">import</span> <span class="n">MNode</span><span class="p">,</span> <span class="n">ModuleGraph</span><span class="p">,</span> <span class="n">UnitWalker</span>
 
-<span class="sd">&quot;&quot;&quot; In python there are in total 23 statements to be considered</span>
-<span class="sd"># the user must specify the match pattern as well as insert pattern</span>
-<span class="sd"># for instance.</span>
-<span class="sd"># it can be  Call - &gt;  another_callname for instance</span>
-<span class="sd"># the given new stmt must be clearly linked to the original stmt if it needs</span>
-<span class="sd"># such information</span>
-<span class="sd"># for example, if the we have an assignment named a = 10</span>
-<span class="sd"># then we need to consturct an output stmt as print(a)</span>
-<span class="sd"># then the new pattern for the output should be Callstmt:args = [stmt.left[0]]</span>
-<span class="sd"># now the first step is to insert an stmt</span>
-<span class="sd"># the second step is to think about how to write template rules</span>
-<span class="sd"># make it easy, format string! such as the new stmt =</span>
-<span class="sd"># &quot;print(&quot;&quot;,&quot;&quot;).format(stmt.targets[0])</span>
-<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="k">class</span> <span class="nc">Rewriter</span><span class="p">:</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The rewriter class contains a set of static methods. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">rule_func</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        src: the source code to be rewritten</span>
+<span class="sd">        rule_func: the function that should be applied for each of statements. </span>
+<span class="sd">        The value of rule_func must not be None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">rule_func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;rule_func cannot be None type!&quot;</span><span class="p">)</span>
             
@@ -221,13 +227,14 @@
         <span class="n">new_src</span> <span class="o">=</span> <span class="n">astor</span><span class="o">.</span><span class="n">to_source</span><span class="p">(</span><span class="n">new_ast</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">new_src</span> 
 
-<span class="c1"># here is the implementation of code rewriter at AST node level.</span>
+
 <span class="k">class</span> <span class="nc">ASTRewriter</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeTransformer</span><span class="p">):</span>
-    <span class="c1">#def __init__(self,src, pattern, new_stmt):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Here is the implementation of code rewriter at AST node level.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+  
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">):</span>
-        <span class="c1"># pattern</span>
-<span class="c1">#        self.pattern = pattern</span>
-<span class="c1">#        self.new_stmt = new_stmt</span>
+  
         <span class="bp">self</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="n">src</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>
@@ -478,8 +485,18 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Rewriter</span><span class="p">:</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The rewriter class contains a set of static methods. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">rule_func</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        src: the source code to be rewritten</span>
+<span class="sd">        rule_func: the function that should be applied for each of statements. </span>
+<span class="sd">        The value of rule_func must not be None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">rule_func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;rule_func cannot be None type!&quot;</span><span class="p">)</span>
             
@@ -498,7 +515,9 @@
 
         </details>
 
-    
+            <div class="docstring"><p>The rewriter class contains a set of static methods.</p>
+</div>
+
 
                             <div id="Rewriter.__init__" class="classattr">
                                         <div class="attr function"><a class="headerlink" href="#Rewriter.__init__">#&nbsp;&nbsp</a>
@@ -514,14 +533,23 @@
                             <div id="Rewriter.rewrite" class="classattr">
                                         <div class="attr function"><a class="headerlink" href="#Rewriter.rewrite">#&nbsp;&nbsp</a>
 
-        
+                <div class="decorator">@staticmethod</div>
+
             <span class="def">def</span>
             <span class="name">rewrite</span><span class="signature">(self, src, rule_func=None)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">rule_func</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">rewrite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">rule_func</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        To constuct a import graph.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        src: the source code to be rewritten</span>
+<span class="sd">        rule_func: the function that should be applied for each of statements. </span>
+<span class="sd">        The value of rule_func must not be None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">rule_func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;rule_func cannot be None type!&quot;</span><span class="p">)</span>
             
@@ -540,7 +568,13 @@
 
         </details>
 
-    
+            <div class="docstring"><p>To constuct a import graph.
+Args:
+src: the source code to be rewritten
+rule_func: the function that should be applied for each of statements. 
+The value of rule_func must not be None</p>
+</div>
+
 
                             </div>
                 </section>
@@ -556,11 +590,12 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">ASTRewriter</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeTransformer</span><span class="p">):</span>
-    <span class="c1">#def __init__(self,src, pattern, new_stmt):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Here is the implementation of code rewriter at AST node level.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+  
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">):</span>
-        <span class="c1"># pattern</span>
-<span class="c1">#        self.pattern = pattern</span>
-<span class="c1">#        self.new_stmt = new_stmt</span>
+  
         <span class="bp">self</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="n">src</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>
@@ -798,39 +833,7 @@
 
         </details>
 
-            <div class="docstring"><p>A :class:<code>NodeVisitor</code> subclass that walks the abstract syntax tree and
-allows modification of nodes.</p>
-
-<p>The <code>NodeTransformer</code> will walk the AST and use the return value of the
-visitor methods to replace or remove the old node.  If the return value of
-the visitor method is <code>None</code>, the node will be removed from its location,
-otherwise it is replaced with the return value.  The return value may be the
-original node in which case no replacement takes place.</p>
-
-<p>Here is an example transformer that rewrites all occurrences of name lookups
-(<code>foo</code>) to <code>data['foo']</code>::</p>
-
-<p>class RewriteName(NodeTransformer):</p>
-
-<pre><code>   def visit_Name(self, node):
-       return copy_location(Subscript(
-           value=Name(id='data', ctx=Load()),
-           slice=Index(value=Str(s=node.id)),
-           ctx=node.ctx
-       ), node)
-</code></pre>
-
-<p>Keep in mind that if the node you're operating on has child nodes you must
-either transform the child nodes yourself or call the :meth:<code><a href="#ASTRewriter.generic_visit">generic_visit</a></code>
-method for the node first.</p>
-
-<p>For nodes that were part of a collection of statements (that applies to all
-statement nodes), the visitor may also return a list of nodes rather than
-just a single node.</p>
-
-<p>Usually you use the transformer like this::</p>
-
-<p>node = YourTransformer().visit(node)</p>
+            <div class="docstring"><p>Here is the implementation of code rewriter at AST node level.</p>
 </div>
 
 
@@ -844,9 +847,7 @@ just a single node.</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">):</span>
-        <span class="c1"># pattern</span>
-<span class="c1">#        self.pattern = pattern</span>
-<span class="c1">#        self.new_stmt = new_stmt</span>
+  
         <span class="bp">self</span><span class="o">.</span><span class="n">src</span> <span class="o">=</span> <span class="n">src</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ast</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">)</span>

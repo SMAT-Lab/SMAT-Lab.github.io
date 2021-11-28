@@ -48,10 +48,23 @@
                     <h1 class="modulename">
 <a href="./../scalpel.html">scalpel</a><wbr>.SSA    </h1>
 
-                
+                        <div class="docstring"><p>Static Single Assignment (SSA) is a technique of IR in the compiling thoery, it also shows great benefits to static anaysis tasks such as constant propagation, dead code elimination and etc.
+Constant propagation is also a matured technique in static anaysis. 
+It is the process of evaluating or recognizing the actual constant values or expressions at a particular program point. This is realized by utilizing control flow and data flow information. Determining the possible values for variables before runtime gives great benefits to software anaysis. 
+For instance, with constant value propagation, we can detect and remove dead code or perfrom type checking.
+In scalpel, we implement constant propagation along with the SSA for execution efficiency.</p>
+</div>
+
                         <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;const&quot;</span><span class="p">]</span>
+            <div class="codehilite"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Static Single Assignment (SSA) is a technique of IR in the compiling thoery, it also shows great benefits to static anaysis tasks such as constant propagation, dead code elimination and etc.</span>
+<span class="sd">Constant propagation is also a matured technique in static anaysis. </span>
+<span class="sd">It is the process of evaluating or recognizing the actual constant values or expressions at a particular program point. This is realized by utilizing control flow and data flow information. Determining the possible values for variables before runtime gives great benefits to software anaysis. </span>
+<span class="sd">For instance, with constant value propagation, we can detect and remove dead code or perfrom type checking.</span>
+<span class="sd">In scalpel, we implement constant propagation along with the SSA for execution efficiency.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;const&quot;</span><span class="p">]</span>
 </pre></div>
 
         </details>
