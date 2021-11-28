@@ -166,10 +166,15 @@ Scalpel Type Inference Static Analysis Tools</p>
 
 <span class="k">class</span> <span class="nc">TypeInference</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Infer types from a given AST node</span>
+<span class="sd">    Infer types for the modules accessible from the entrypoints with the help of a set of heuristic functions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entry_point</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            name: the name of the type inference analyser</span>
+<span class="sd">            entry_point: the entry point, can be the root folder of a package or a python file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span> <span class="o">=</span> <span class="n">entry_point</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_node</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span><span class="p">))</span>
@@ -291,6 +296,9 @@ Scalpel Type Inference Static Analysis Tools</p>
                         <span class="n">node</span><span class="o">.</span><span class="n">node_type_dict</span><span class="p">[</span><span class="n">function_name</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;3call&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">get_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the inferred type information in a list of dictionaries</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">n_known</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">type_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaves</span><span class="p">:</span>
@@ -353,6 +361,9 @@ Scalpel Type Inference Static Analysis Tools</p>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">process_file</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process and extract information from the source files with a set of heuristic functions for type inference</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">heuristics</span> <span class="o">=</span> <span class="n">Heuristics</span><span class="p">()</span>
         <span class="n">processed_file</span> <span class="o">=</span> <span class="n">ProcessedFile</span><span class="p">()</span>
 
@@ -601,6 +612,9 @@ Scalpel Type Inference Static Analysis Tools</p>
         <span class="k">return</span> <span class="n">processed_file</span>
 
     <span class="k">def</span> <span class="nf">print_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">functions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function for printing type inference results in a formatted way</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">infer_types</span><span class="p">()</span>
         <span class="n">inferred_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_types</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">inferred_types</span><span class="p">:</span>
@@ -709,10 +723,15 @@ Scalpel Type Inference Static Analysis Tools</p>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">TypeInference</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Infer types from a given AST node</span>
+<span class="sd">    Infer types for the modules accessible from the entrypoints with the help of a set of heuristic functions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entry_point</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            name: the name of the type inference analyser</span>
+<span class="sd">            entry_point: the entry point, can be the root folder of a package or a python file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span> <span class="o">=</span> <span class="n">entry_point</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_node</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span><span class="p">))</span>
@@ -834,6 +853,9 @@ Scalpel Type Inference Static Analysis Tools</p>
                         <span class="n">node</span><span class="o">.</span><span class="n">node_type_dict</span><span class="p">[</span><span class="n">function_name</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;3call&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">get_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the inferred type information in a list of dictionaries</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">n_known</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">type_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaves</span><span class="p">:</span>
@@ -896,6 +918,9 @@ Scalpel Type Inference Static Analysis Tools</p>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">process_file</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process and extract information from the source files with a set of heuristic functions for type inference</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">heuristics</span> <span class="o">=</span> <span class="n">Heuristics</span><span class="p">()</span>
         <span class="n">processed_file</span> <span class="o">=</span> <span class="n">ProcessedFile</span><span class="p">()</span>
 
@@ -1144,6 +1169,9 @@ Scalpel Type Inference Static Analysis Tools</p>
         <span class="k">return</span> <span class="n">processed_file</span>
 
     <span class="k">def</span> <span class="nf">print_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">functions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function for printing type inference results in a formatted way</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">infer_types</span><span class="p">()</span>
         <span class="n">inferred_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_types</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">inferred_types</span><span class="p">:</span>
@@ -1176,7 +1204,7 @@ Scalpel Type Inference Static Analysis Tools</p>
 
         </details>
 
-            <div class="docstring"><p>Infer types from a given AST node</p>
+            <div class="docstring"><p>Infer types for the modules accessible from the entrypoints with the help of a set of heuristic functions</p>
 </div>
 
 
@@ -1190,6 +1218,11 @@ Scalpel Type Inference Static Analysis Tools</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">entry_point</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            name: the name of the type inference analyser</span>
+<span class="sd">            entry_point: the entry point, can be the root folder of a package or a python file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span> <span class="o">=</span> <span class="n">entry_point</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root_node</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entry_point</span><span class="p">))</span>
@@ -1205,7 +1238,11 @@ Scalpel Type Inference Static Analysis Tools</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Args:
+    name: the name of the type inference analyser
+    entry_point: the entry point, can be the root folder of a package or a python file</p>
+</div>
+
 
                             </div>
                             <div id="TypeInference.infer_types" class="classattr">
@@ -1344,6 +1381,9 @@ Scalpel Type Inference Static Analysis Tools</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">get_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the inferred type information in a list of dictionaries</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">n_known</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">type_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaves</span><span class="p">:</span>
@@ -1407,7 +1447,9 @@ Scalpel Type Inference Static Analysis Tools</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Get the inferred type information in a list of dictionaries</p>
+</div>
+
 
                             </div>
                             <div id="TypeInference.process_file" class="classattr">
@@ -1423,6 +1465,9 @@ Scalpel Type Inference Static Analysis Tools</p>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">process_file</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process and extract information from the source files with a set of heuristic functions for type inference</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">heuristics</span> <span class="o">=</span> <span class="n">Heuristics</span><span class="p">()</span>
         <span class="n">processed_file</span> <span class="o">=</span> <span class="n">ProcessedFile</span><span class="p">()</span>
 
@@ -1673,7 +1718,9 @@ Scalpel Type Inference Static Analysis Tools</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Process and extract information from the source files with a set of heuristic functions for type inference</p>
+</div>
+
 
                             </div>
                             <div id="TypeInference.print_types" class="classattr">
@@ -1687,6 +1734,9 @@ Scalpel Type Inference Static Analysis Tools</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">print_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">functions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function for printing type inference results in a formatted way</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">infer_types</span><span class="p">()</span>
         <span class="n">inferred_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_types</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">inferred_types</span><span class="p">:</span>
@@ -1719,7 +1769,9 @@ Scalpel Type Inference Static Analysis Tools</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Function for printing type inference results in a formatted way</p>
+</div>
+
 
                             </div>
                 </section>

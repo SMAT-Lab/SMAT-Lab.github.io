@@ -152,6 +152,9 @@ Data classes used in the Type Inference process</p>
 
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">TypeWarning</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Holds information about a type warning</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warning</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Stores warning text</span>
     <span class="n">line</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Line number of warning</span>
     <span class="n">file</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Line where the warning was found</span>
@@ -163,6 +166,9 @@ Data classes used in the Type Inference process</p>
 
 <span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">ScalpelVariable</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Holds information about a variable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># The name of the variable</span>
     <span class="n">function</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># The name of the function where the variable is defined</span>
     <span class="n">line</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># The line number that the variable is defined at</span>
@@ -236,6 +242,9 @@ Data classes used in the Type Inference process</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">TypeWarning</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Holds information about a type warning</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warning</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Stores warning text</span>
     <span class="n">line</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Line number of warning</span>
     <span class="n">file</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Line where the warning was found</span>
@@ -247,7 +256,7 @@ Data classes used in the Type Inference process</p>
 
         </details>
 
-            <div class="docstring"><p>TypeWarning(warning: str, line: int, file: str, variable: str)</p>
+            <div class="docstring"><p>Holds information about a type warning</p>
 </div>
 
 
@@ -294,6 +303,9 @@ Data classes used in the Type Inference process</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">ScalpelVariable</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Holds information about a variable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># The name of the variable</span>
     <span class="n">function</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># The name of the function where the variable is defined</span>
     <span class="n">line</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># The line number that the variable is defined at</span>
@@ -308,7 +320,7 @@ Data classes used in the Type Inference process</p>
 
         </details>
 
-            <div class="docstring"><p>ScalpelVariable(name: str, function: str, line: int, type: str = None, in_conditional: bool = False, in_equality: bool = False, is_callable: bool = False, called_methods: List[str] = None, binary_operation: _ast.BinOp = None, is_arg: bool = None)</p>
+            <div class="docstring"><p>Holds information about a variable</p>
 </div>
 
 

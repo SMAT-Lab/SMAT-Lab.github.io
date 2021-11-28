@@ -246,10 +246,11 @@ Utilities for type inference module</p>
 <span class="k">def</span> <span class="nf">get_type</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">imports</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the type of a node</span>
-
-<span class="sd">    :param node: The node to get the type of</span>
-<span class="sd">    :param imports: Dictionary of known imported types</span>
-<span class="sd">    :return: The type of the node</span>
+<span class="sd">    Args:</span>
+<span class="sd">        node: The node to get the type of</span>
+<span class="sd">        imports: Dictionary of known imported types</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The type of the node</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># TODO: Implement consistent list types where required</span>
@@ -411,8 +412,10 @@ Utilities for type inference module</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a string is written in camel case</span>
 
-<span class="sd">    :param s: The string to check</span>
-<span class="sd">    :return: True if the string is camel case, False otherwise</span>
+<span class="sd">    Args:</span>
+<span class="sd">        s: The string to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True if the string is camel case, False otherwise</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="s1">&#39;([A-Z][a-z]*)+&#39;</span>
     <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
@@ -423,9 +426,10 @@ Utilities for type inference module</p>
 <span class="k">def</span> <span class="nf">parse_module</span><span class="p">(</span><span class="n">m_ast</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the function, class and import nodes for a module</span>
-
-<span class="sd">    :param m_ast: The AST tree to get the nodes for</span>
-<span class="sd">    :return: Tuple containing list of function nodes, list of class nodes and list of import nodes</span>
+<span class="sd">    Args:</span>
+<span class="sd">        m_ast: The AST tree to get the nodes for</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple containing list of function nodes, list of class nodes and list of import nodes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fun_nodes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">class_nodes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -468,9 +472,11 @@ Utilities for type inference module</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a function is imported from another library</span>
 
-<span class="sd">    :param func_name: The name of the function to check</span>
-<span class="sd">    :param import_dict: Dictionary of import modules</span>
-<span class="sd">    :return: The module that the function was import from or None if it was not imported</span>
+<span class="sd">    Args:</span>
+<span class="sd">        func_name: The name of the function to check</span>
+<span class="sd">        import_dict: Dictionary of import modules</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The module that the function was import from or None if it was not imported</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name_parts</span> <span class="o">=</span> <span class="n">func_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">name_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">import_dict</span><span class="p">:</span>
@@ -492,6 +498,9 @@ Utilities for type inference module</p>
 
 
 <span class="k">def</span> <span class="nf">generate_ast</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates ast from the source string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
             <span class="n">tree</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">,</span> <span class="n">type_comments</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -509,9 +518,10 @@ Utilities for type inference module</p>
 <span class="k">def</span> <span class="nf">get_function_comment</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the function comment header for function source code</span>
-
-<span class="sd">    :param source: The function source code to check</span>
-<span class="sd">    :return: The function header comment</span>
+<span class="sd">    Args:</span>
+<span class="sd">        source: The function source code to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The function header comment</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\&#39;(.+?)\&#39;&quot;</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
     <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -523,9 +533,10 @@ Utilities for type inference module</p>
 <span class="k">def</span> <span class="nf">is_done</span><span class="p">(</span><span class="n">t_vals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a list of type values is in a finished state</span>
-
-<span class="sd">    :param t_vals: List of type values to check</span>
-<span class="sd">    :return: True if in a finished state, False otherwise</span>
+<span class="sd">    Args:</span>
+<span class="sd">        t_vals: List of type values to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True if in a finished state, False otherwise</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;call&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;3call&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t_vals</span><span class="p">)</span>
 
@@ -1003,10 +1014,11 @@ allows modifications.</p>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_type</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">imports</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the type of a node</span>
-
-<span class="sd">    :param node: The node to get the type of</span>
-<span class="sd">    :param imports: Dictionary of known imported types</span>
-<span class="sd">    :return: The type of the node</span>
+<span class="sd">    Args:</span>
+<span class="sd">        node: The node to get the type of</span>
+<span class="sd">        imports: Dictionary of known imported types</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The type of the node</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># TODO: Implement consistent list types where required</span>
@@ -1127,11 +1139,12 @@ allows modifications.</p>
 
         </details>
 
-            <div class="docstring"><p>Get the type of a node</p>
-
-<p>:param node: The node to get the type of
-:param imports: Dictionary of known imported types
-:return: The type of the node</p>
+            <div class="docstring"><p>Get the type of a node
+Args:
+    node: The node to get the type of
+    imports: Dictionary of known imported types
+Returns:
+    The type of the node</p>
 </div>
 
 
@@ -1206,8 +1219,10 @@ allows modifications.</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a string is written in camel case</span>
 
-<span class="sd">    :param s: The string to check</span>
-<span class="sd">    :return: True if the string is camel case, False otherwise</span>
+<span class="sd">    Args:</span>
+<span class="sd">        s: The string to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True if the string is camel case, False otherwise</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pattern</span> <span class="o">=</span> <span class="s1">&#39;([A-Z][a-z]*)+&#39;</span>
     <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
@@ -1219,8 +1234,10 @@ allows modifications.</p>
 
             <div class="docstring"><p>Determines whether a string is written in camel case</p>
 
-<p>:param s: The string to check
-:return: True if the string is camel case, False otherwise</p>
+<p>Args:
+    s: The string to check
+Returns:
+    True if the string is camel case, False otherwise</p>
 </div>
 
 
@@ -1238,9 +1255,10 @@ allows modifications.</p>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">parse_module</span><span class="p">(</span><span class="n">m_ast</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the function, class and import nodes for a module</span>
-
-<span class="sd">    :param m_ast: The AST tree to get the nodes for</span>
-<span class="sd">    :return: Tuple containing list of function nodes, list of class nodes and list of import nodes</span>
+<span class="sd">    Args:</span>
+<span class="sd">        m_ast: The AST tree to get the nodes for</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple containing list of function nodes, list of class nodes and list of import nodes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">fun_nodes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">class_nodes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1259,10 +1277,11 @@ allows modifications.</p>
 
         </details>
 
-            <div class="docstring"><p>Get the function, class and import nodes for a module</p>
-
-<p>:param m_ast: The AST tree to get the nodes for
-:return: Tuple containing list of function nodes, list of class nodes and list of import nodes</p>
+            <div class="docstring"><p>Get the function, class and import nodes for a module
+Args:
+    m_ast: The AST tree to get the nodes for
+Returns:
+    Tuple containing list of function nodes, list of class nodes and list of import nodes</p>
 </div>
 
 
@@ -1318,9 +1337,11 @@ allows modifications.</p>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a function is imported from another library</span>
 
-<span class="sd">    :param func_name: The name of the function to check</span>
-<span class="sd">    :param import_dict: Dictionary of import modules</span>
-<span class="sd">    :return: The module that the function was import from or None if it was not imported</span>
+<span class="sd">    Args:</span>
+<span class="sd">        func_name: The name of the function to check</span>
+<span class="sd">        import_dict: Dictionary of import modules</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The module that the function was import from or None if it was not imported</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name_parts</span> <span class="o">=</span> <span class="n">func_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">name_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">import_dict</span><span class="p">:</span>
@@ -1332,9 +1353,11 @@ allows modifications.</p>
 
             <div class="docstring"><p>Determines whether a function is imported from another library</p>
 
-<p>:param func_name: The name of the function to check
-:param import_dict: Dictionary of import modules
-:return: The module that the function was import from or None if it was not imported</p>
+<p>Args:
+    func_name: The name of the function to check
+    import_dict: Dictionary of import modules
+Returns:
+    The module that the function was import from or None if it was not imported</p>
 </div>
 
 
@@ -1393,6 +1416,9 @@ allows modifications.</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">generate_ast</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates ast from the source string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
             <span class="n">tree</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exec&#39;</span><span class="p">,</span> <span class="n">type_comments</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1409,7 +1435,9 @@ allows modifications.</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Generates ast from the source string</p>
+</div>
+
 
                 </section>
                 <section id="get_function_comment">
@@ -1425,9 +1453,10 @@ allows modifications.</p>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_function_comment</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the function comment header for function source code</span>
-
-<span class="sd">    :param source: The function source code to check</span>
-<span class="sd">    :return: The function header comment</span>
+<span class="sd">    Args:</span>
+<span class="sd">        source: The function source code to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The function header comment</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\&#39;(.+?)\&#39;&quot;</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
     <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -1438,10 +1467,11 @@ allows modifications.</p>
 
         </details>
 
-            <div class="docstring"><p>Get the function comment header for function source code</p>
-
-<p>:param source: The function source code to check
-:return: The function header comment</p>
+            <div class="docstring"><p>Get the function comment header for function source code
+Args:
+    source: The function source code to check
+Returns:
+    The function header comment</p>
 </div>
 
 
@@ -1459,19 +1489,21 @@ allows modifications.</p>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">is_done</span><span class="p">(</span><span class="n">t_vals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determines whether a list of type values is in a finished state</span>
-
-<span class="sd">    :param t_vals: List of type values to check</span>
-<span class="sd">    :return: True if in a finished state, False otherwise</span>
+<span class="sd">    Args:</span>
+<span class="sd">        t_vals: List of type values to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True if in a finished state, False otherwise</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;call&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;input&#39;</span><span class="p">,</span> <span class="s1">&#39;3call&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">t_vals</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Determines whether a list of type values is in a finished state</p>
-
-<p>:param t_vals: List of type values to check
-:return: True if in a finished state, False otherwise</p>
+            <div class="docstring"><p>Determines whether a list of type values is in a finished state
+Args:
+    t_vals: List of type values to check
+Returns:
+    True if in a finished state, False otherwise</p>
 </div>
 
 

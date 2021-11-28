@@ -170,6 +170,11 @@
 
 
 <span class="k">def</span> <span class="nf">get_args</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the argument types of the node</span>
+<span class="sd">    Args:</span>
+<span class="sd">        node: the node being checked</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arg_type</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Name</span><span class="p">):</span>
@@ -211,6 +216,12 @@
 
 
 <span class="k">def</span> <span class="nf">get_call_type</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the argument types of all function calls</span>
+<span class="sd">    Args:</span>
+<span class="sd">        tree: the ast tree being checked</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">func_calls</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ast</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Call</span><span class="p">):</span>
@@ -587,6 +598,11 @@ just a single node.</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_args</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the argument types of the node</span>
+<span class="sd">    Args:</span>
+<span class="sd">        node: the node being checked</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">arg_type</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Name</span><span class="p">):</span>
@@ -622,7 +638,11 @@ just a single node.</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Get the argument types of the node
+Args:
+    node: the node being checked</p>
+</div>
+
 
                 </section>
                 <section id="get_func_calls_type">
@@ -658,6 +678,12 @@ just a single node.</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_call_type</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the argument types of all function calls</span>
+<span class="sd">    Args:</span>
+<span class="sd">        tree: the ast tree being checked</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">func_calls</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">ast</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Call</span><span class="p">):</span>
@@ -669,7 +695,11 @@ just a single node.</p>
 
         </details>
 
-    
+            <div class="docstring"><p>Get the argument types of all function calls
+Args:
+    tree: the ast tree being checked</p>
+</div>
+
 
                 </section>
     </main>
