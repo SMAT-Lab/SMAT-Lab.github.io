@@ -52,7 +52,7 @@ optimization and taint analysis.
 <a href="">scalpel.cfg</a> module is used to construct the control flow graph for given python programs. The basic unit in the CFG,
 Block, contains a list of sequential statements that can be executed in a program without any control jumps. The Blocks
 are linked by Link objects, which represent control flow jumps between two blocks and contain the jump conditions in
-the form of an expression.</p>
+the form of an expression. Please see the example diagram a control flow graph <a href="https://github.com/SMAT-Lab/Scalpel/blob/dev/resources/cfg_example.png">here</a></p>
 </div>
 
                         <details>
@@ -63,7 +63,7 @@ the form of an expression.</p>
 <span class="sd">scalpel.cfg module is used to construct the control flow graph for given python programs. The basic unit in the CFG,</span>
 <span class="sd">Block, contains a list of sequential statements that can be executed in a program without any control jumps. The Blocks</span>
 <span class="sd">are linked by Link objects, which represent control flow jumps between two blocks and contain the jump conditions in</span>
-<span class="sd">the form of an expression.</span>
+<span class="sd">the form of an expression. Please see the example diagram a control flow graph [here](https://github.com/SMAT-Lab/Scalpel/blob/dev/resources/cfg_example.png)</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">.builder</span> <span class="kn">import</span> <span class="n">CFGBuilder</span>
 <span class="kn">from</span> <span class="nn">.model</span> <span class="kn">import</span> <span class="n">Block</span><span class="p">,</span> <span class="n">Link</span><span class="p">,</span> <span class="n">CFG</span>
