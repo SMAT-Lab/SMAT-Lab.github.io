@@ -161,13 +161,13 @@ futher anaysis. The module contain a single class named SSA.</p>
     <span class="k">def</span> <span class="nf">compute_SSA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute single static assignment form representations for a given CFG. </span>
-<span class="sd">        During the computing, constant value and alias pairs are generated.</span>
-<span class="sd">        # step 1a: compute the dominance frontier</span>
-<span class="sd">        # step 1b: use dominance frontier to place phi node</span>
-<span class="sd">        # if node X contains assignment to a, put phi node for a in dominance frontier of X</span>
-<span class="sd">        # adding phi function may require introducing additional phi function </span>
-<span class="sd">        # start from the entry node </span>
-<span class="sd">        # step2: rename variables so only one definition per name</span>
+<span class="sd">        During the computing, constant value and alias pairs are generated. The following steps are used to compute SSA representations:</span>
+<span class="sd">        step 1a: compute the dominance frontier</span>
+<span class="sd">        step 1b: use dominance frontier to place phi node</span>
+<span class="sd">        if node X contains assignment to a, put phi node for a in dominance frontier of X</span>
+<span class="sd">        adding phi function may require introducing additional phi function </span>
+<span class="sd">        start from the entry node </span>
+<span class="sd">        step2: rename variables so only one definition per name</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            cfg: a control flow graph.</span>
@@ -481,13 +481,13 @@ futher anaysis. The module contain a single class named SSA.</p>
     <span class="k">def</span> <span class="nf">compute_SSA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute single static assignment form representations for a given CFG. </span>
-<span class="sd">        During the computing, constant value and alias pairs are generated.</span>
-<span class="sd">        # step 1a: compute the dominance frontier</span>
-<span class="sd">        # step 1b: use dominance frontier to place phi node</span>
-<span class="sd">        # if node X contains assignment to a, put phi node for a in dominance frontier of X</span>
-<span class="sd">        # adding phi function may require introducing additional phi function </span>
-<span class="sd">        # start from the entry node </span>
-<span class="sd">        # step2: rename variables so only one definition per name</span>
+<span class="sd">        During the computing, constant value and alias pairs are generated. The following steps are used to compute SSA representations:</span>
+<span class="sd">        step 1a: compute the dominance frontier</span>
+<span class="sd">        step 1b: use dominance frontier to place phi node</span>
+<span class="sd">        if node X contains assignment to a, put phi node for a in dominance frontier of X</span>
+<span class="sd">        adding phi function may require introducing additional phi function </span>
+<span class="sd">        start from the entry node </span>
+<span class="sd">        step2: rename variables so only one definition per name</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            cfg: a control flow graph.</span>
@@ -824,13 +824,13 @@ Args:
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">compute_SSA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute single static assignment form representations for a given CFG. </span>
-<span class="sd">        During the computing, constant value and alias pairs are generated.</span>
-<span class="sd">        # step 1a: compute the dominance frontier</span>
-<span class="sd">        # step 1b: use dominance frontier to place phi node</span>
-<span class="sd">        # if node X contains assignment to a, put phi node for a in dominance frontier of X</span>
-<span class="sd">        # adding phi function may require introducing additional phi function </span>
-<span class="sd">        # start from the entry node </span>
-<span class="sd">        # step2: rename variables so only one definition per name</span>
+<span class="sd">        During the computing, constant value and alias pairs are generated. The following steps are used to compute SSA representations:</span>
+<span class="sd">        step 1a: compute the dominance frontier</span>
+<span class="sd">        step 1b: use dominance frontier to place phi node</span>
+<span class="sd">        if node X contains assignment to a, put phi node for a in dominance frontier of X</span>
+<span class="sd">        adding phi function may require introducing additional phi function </span>
+<span class="sd">        start from the entry node </span>
+<span class="sd">        step2: rename variables so only one definition per name</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            cfg: a control flow graph.</span>
@@ -920,19 +920,13 @@ Args:
         </details>
 
             <div class="docstring"><p>Compute single static assignment form representations for a given CFG. 
-During the computing, constant value and alias pairs are generated.</p>
-
-<h1 id="step-1a-compute-the-dominance-frontier">step 1a: compute the dominance frontier</h1>
-
-<h1 id="step-1b-use-dominance-frontier-to-place-phi-node">step 1b: use dominance frontier to place phi node</h1>
-
-<h1 id="if-node-x-contains-assignment-to-a-put-phi-node-for-a-in-dominance-frontier-of-x">if node X contains assignment to a, put phi node for a in dominance frontier of X</h1>
-
-<h1 id="adding-phi-function-may-require-introducing-additional-phi-function">adding phi function may require introducing additional phi function</h1>
-
-<h1 id="start-from-the-entry-node">start from the entry node</h1>
-
-<h1 id="step2-rename-variables-so-only-one-definition-per-name">step2: rename variables so only one definition per name</h1>
+During the computing, constant value and alias pairs are generated. The following steps are used to compute SSA representations:
+step 1a: compute the dominance frontier
+step 1b: use dominance frontier to place phi node
+if node X contains assignment to a, put phi node for a in dominance frontier of X
+adding phi function may require introducing additional phi function 
+start from the entry node 
+step2: rename variables so only one definition per name</p>
 
 <p>Args:
     cfg: a control flow graph.</p>
