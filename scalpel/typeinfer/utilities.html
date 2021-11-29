@@ -159,6 +159,9 @@
 
 
 <span class="k">class</span> <span class="nc">TypeInferCallTransformer</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A NodeTransformer class for getting function call information</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">call_names</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -192,6 +195,9 @@
 
 
 <span class="k">class</span> <span class="nc">FuncCallVisitor</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeVisitor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A NodeVisitor class for getting function call information</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">call_names</span> <span class="o">=</span> <span class="p">[]</span>
@@ -615,6 +621,9 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">TypeInferCallTransformer</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A NodeTransformer class for getting function call information</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">call_names</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -649,39 +658,7 @@
 
         </details>
 
-            <div class="docstring"><p>A :class:<code>NodeVisitor</code> subclass that walks the abstract syntax tree and
-allows modification of nodes.</p>
-
-<p>The <code>NodeTransformer</code> will walk the AST and use the return value of the
-visitor methods to replace or remove the old node.  If the return value of
-the visitor method is <code>None</code>, the node will be removed from its location,
-otherwise it is replaced with the return value.  The return value may be the
-original node in which case no replacement takes place.</p>
-
-<p>Here is an example transformer that rewrites all occurrences of name lookups
-(<code>foo</code>) to <code>data['foo']</code>::</p>
-
-<p>class RewriteName(NodeTransformer):</p>
-
-<pre><code>   def visit_Name(self, node):
-       return copy_location(Subscript(
-           value=Name(id='data', ctx=Load()),
-           slice=Index(value=Str(s=node.id)),
-           ctx=node.ctx
-       ), node)
-</code></pre>
-
-<p>Keep in mind that if the node you're operating on has child nodes you must
-either transform the child nodes yourself or call the :meth:<code><a href="#TypeInferCallTransformer.generic_visit">generic_visit</a></code>
-method for the node first.</p>
-
-<p>For nodes that were part of a collection of statements (that applies to all
-statement nodes), the visitor may also return a list of nodes rather than
-just a single node.</p>
-
-<p>Usually you use the transformer like this::</p>
-
-<p>node = YourTransformer().visit(node)</p>
+            <div class="docstring"><p>A NodeTransformer class for getting function call information</p>
 </div>
 
 
@@ -785,6 +762,9 @@ just a single node.</p>
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">FuncCallVisitor</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">NodeVisitor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A NodeVisitor class for getting function call information</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">call_names</span> <span class="o">=</span> <span class="p">[]</span>
@@ -821,22 +801,7 @@ just a single node.</p>
 
         </details>
 
-            <div class="docstring"><p>A node visitor base class that walks the abstract syntax tree and calls a
-visitor function for every node found.  This function may return a value
-which is forwarded by the <code><a href="#FuncCallVisitor.visit">visit</a></code> method.</p>
-
-<p>This class is meant to be subclassed, with the subclass adding visitor
-methods.</p>
-
-<p>Per default the visitor functions for the nodes are <code>'visit_'</code> +
-class name of the node.  So a <code>TryFinally</code> node visit function would
-be <code>visit_TryFinally</code>.  This behavior can be changed by overriding
-the <code><a href="#FuncCallVisitor.visit">visit</a></code> method.  If no visitor function exists for a node
-(return value <code>None</code>) the <code><a href="#FuncCallVisitor.generic_visit">generic_visit</a></code> visitor is used instead.</p>
-
-<p>Don't use the <code>NodeVisitor</code> if you want to apply changes to nodes during
-traversing.  For this a special visitor exists (<code>NodeTransformer</code>) that
-allows modifications.</p>
+            <div class="docstring"><p>A NodeVisitor class for getting function call information</p>
 </div>
 
 
