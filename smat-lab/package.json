@@ -1,5 +1,5 @@
 {
-  "homapage": "https://smat-lab.github.io/SMAT-Lab.github.io",
+  "homapage": "./",
   "name": "smat-lab",
   "version": "0.1.0",
   "private": true,
