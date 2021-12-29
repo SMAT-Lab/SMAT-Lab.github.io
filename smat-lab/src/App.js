@@ -4,7 +4,10 @@ import {
   Routes,
   Route,
   Link
-} from "react-router-dom";import Navbar from "./components/Navbar";
+} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 import Home from "./routes/Home";
 import News from "./routes/News";
 import People from "./routes/People";
@@ -19,7 +22,7 @@ function App() {
         <Router>
           <div style={{display:"flex", minHeight:"100vh", flexDirection:"column"}}>
             <Navbar />
-            <div style={{flex:"1",}}>
+            <div style={{flex:"1", paddingTop:"52px"}}>
               <Routes>
                 <Route exact path="/"  element={<Home/>}/>
                 <Route exact path="/news" element={<News/>}/>
@@ -29,7 +32,7 @@ function App() {
                 <Route exact path="/awards" element={<Awards/>}/>    
               </Routes>
             </div>
-            {/* <Footer /> */}
+            <Footer />
           </div>
         </Router>
       </div>

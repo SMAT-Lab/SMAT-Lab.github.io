@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from 'react'
 import Typography from '@material-ui/core/Typography';
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, useMediaQuery } from '@material-ui/core';
 import { Button } from '@mui/material';
@@ -12,7 +12,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/Inbox';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import NewspaperRoundedIcon from '@mui/icons-material/NewspaperRounded';
 import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';
@@ -21,6 +20,7 @@ import AccountTreeRoundedIcon from '@mui/icons-material/AccountTreeRounded';
 import CasesRoundedIcon from '@mui/icons-material/CasesRounded';
 import MilitaryTechRoundedIcon from '@mui/icons-material/MilitaryTechRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,12 +87,12 @@ export default function Navbar(props) {
                         <Paper style={{ width: `100%`, }}>
                             <nav aria-label="main mailbox folders">
                                 <List>
-                                    <ParentComponent iconComponent={HomeRoundedIcon} title="Home" link='/'/>
-                                    <ParentComponent iconComponent={NewspaperRoundedIcon} title="News" link='/news'/>
-                                    <ParentComponent iconComponent={PeopleRoundedIcon} title="People" link='/people'/>
-                                    <ParentComponent iconComponent={LibraryBooksRoundedIcon} title="Publications" link='/publications'/>
-                                    <ParentComponent iconComponent={AccountTreeRoundedIcon} title="Projects" link='projects'/>
-                                    <ParentComponent iconComponent={MilitaryTechRoundedIcon} title="Awards" link='/awards'/>                                    
+                                    <ParentComponent iconComponent={HomeRoundedIcon} title="Home" link='/' />
+                                    <ParentComponent iconComponent={NewspaperRoundedIcon} title="News" link='/news' />
+                                    <ParentComponent iconComponent={PeopleRoundedIcon} title="People" link='/people' />
+                                    <ParentComponent iconComponent={LibraryBooksRoundedIcon} title="Publications" link='/publications' />
+                                    <ParentComponent iconComponent={AccountTreeRoundedIcon} title="Projects" link='projects' />
+                                    <ParentComponent iconComponent={MilitaryTechRoundedIcon} title="Awards" link='/awards' />
                                 </List>
                             </nav>
                         </Paper>
@@ -101,14 +101,14 @@ export default function Navbar(props) {
             </Popper>
 
 
-            <Grid ref={navbarRef} container alignItems="center" justifyContent="center" style={{ backgroundColor: "black", height: "52px", minWidth: "" }}>
+            <Grid ref={navbarRef} container alignItems="center" justifyContent="center" style={{ position: 'fixed', zIndex: '999', top: 0, backgroundColor: "black", height: "52px", minWidth: "" }}>
 
                 <Grid container item alignItems="center" style={{ maxWidth: '1344px', height: "100%", padding: "0 15px" }}>
                     <Grid container item xs={3} justifyContent="flex-start" >
-                        <Typography style={{ fontWeight: "900", fontSize: "20px", color: "white", minWidth: "230px", paddingLeft: "8px" }}>SMAT Lab@MONASH</Typography>
+                        <Typography style={{ fontWeight: "900", fontSize: "20px", color: "white", minWidth: "230px" }}>SMAT Lab@MONASH</Typography>
                     </Grid>
 
-                    <Grid container item xs={9} justifyContent="flex-end" style={{ padding: "0", margin: '0', height: "100%", minWidth: "" }}>
+                    <Grid container item xs={9} justifyContent="flex-end" style={{ height: "100%" }}>
                         {QueryMinWidth720 ?
                             <>
                                 <Navtab link="/" title='Home' />
@@ -120,7 +120,12 @@ export default function Navbar(props) {
                             </>
                             :
                             <>
-                                <Button onClick={handleClick('bottom-end')} variant="text" style={{ color: "white" }}><MenuRoundedIcon/></Button>
+                                <Button onClick={handleClick('bottom-end')} variant="text" style={{ color: "white" }}>
+                                    {open?
+                                    <HighlightOffRoundedIcon/>
+                                    :
+                                    <MenuRoundedIcon />}
+                                </Button>
                             </>
                         }
                     </Grid>
@@ -150,7 +155,7 @@ function ParentComponent(props) {
                 <ListItemIcon>
                     <IconComponent />
                 </ListItemIcon>
-                <ListItemText primary={props.title}/>
+                <ListItemText primary={props.title} />
             </ListItemButton>
         </ListItem>
     );

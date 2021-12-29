@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useEffect} from "react";
+import PageWrapper from '../components/PageWrapper';
+import SubPageWrapper from '../components/SubPageWrapper';
+import MyLi from '../components/MyLi';
+import MyLink from '../components/MyLink';
 
+export default function Projects(props) {
+    useEffect(() => {
+        document.title = "SMAT Lab - Projects"
+    }, [])
 
-import { Grid } from '@material-ui/core';
-
-export default function Home(props) {
     return (
-        <>
-            <Grid container justify="center" style={{ backgroundColor: "", paddingTop: "5%" }}>
 
-                <Grid xs={12} item style={{ textAlign: "center", fontWeight: "bold", paddingTop: "3%" }} >
-                    {"Projects of Our Group"}
-                </Grid>
-            </Grid>
-        </>
+        <PageWrapper showDivider={true} title="Projects of Our Group">
+            <SubPageWrapper title="Funded Research Projects (Ongoing)">    
+                    <MyLi >
+                        safsfsfsdsafsfsf
+                        d <MyLink href="https://www.google.com/" >dsfdddds=+d</MyLink> d
+                        sdsafsfsfsdsafsfsfsdsaf asfsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsd
+                    </MyLi>
+
+            </SubPageWrapper>
+            <SubPageWrapper title="Funded Research Projects (Completed)">                
+                    <MyLi >
+                        safsfsfsdsafsfsf
+                        d <MyLink href="https://www.google.com/" >dsfdddds=+d</MyLink> d
+                        sdsafsfsfsdsafsfsfsdsaf asfsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsd
+                    </MyLi>
+           
+            </SubPageWrapper>
+        </PageWrapper>
     );
-
 }

@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useEffect} from "react";
+import PageWrapper from '../components/PageWrapper';
+import SubPageWrapper from '../components/SubPageWrapper';
+import MyProfile from '../components/People/MyProfile';
 
 
-import { Grid } from '@material-ui/core';
+export default function People(props) {
+    useEffect(() => {
+        document.title = "SMAT Lab - People"
+    }, [])
 
-export default function Home(props) {
     return (
-        <>
-            <Grid container justify="center" style={{ backgroundColor: "", paddingTop: "5%" }}>
+        <PageWrapper showDivider={true} title="Our Group Members">
+            <SubPageWrapper title="Faculty" profile={true}>
+                <MyProfile name="Li Li"/>
+            </SubPageWrapper>
 
-                <Grid xs={12} item style={{ textAlign: "center", fontWeight: "bold", paddingTop: "3%" }} >
-                    {"Our Group Members"}
-                </Grid>
-            </Grid>
-        </>
+            <SubPageWrapper title="Postgraduate Students" profile={true}>
+                <MyProfile name="Yonghui Liu"/>
+            </SubPageWrapper>
+
+            <SubPageWrapper title="Undergraduate Students">
+
+            </SubPageWrapper>
+
+            <SubPageWrapper title="RA/Visitors" profile={true}>
+
+            </SubPageWrapper>
+
+            <SubPageWrapper title="Alumni" profile={true}>
+
+            </SubPageWrapper>
+        </PageWrapper>
     );
 
 }
