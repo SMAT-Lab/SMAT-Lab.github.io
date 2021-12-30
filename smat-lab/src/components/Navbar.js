@@ -87,12 +87,12 @@ export default function Navbar(props) {
                         <Paper style={{ width: `100%`, }}>
                             <nav aria-label="main mailbox folders">
                                 <List>
-                                    <ParentComponent iconComponent={HomeRoundedIcon} title="Home" link='/' />
-                                    <ParentComponent iconComponent={NewspaperRoundedIcon} title="News" link='/news' />
-                                    <ParentComponent iconComponent={PeopleRoundedIcon} title="People" link='/people' />
-                                    <ParentComponent iconComponent={LibraryBooksRoundedIcon} title="Publications" link='/publications' />
-                                    <ParentComponent iconComponent={AccountTreeRoundedIcon} title="Projects" link='projects' />
-                                    <ParentComponent iconComponent={MilitaryTechRoundedIcon} title="Awards" link='/awards' />
+                                    <ParentComponent iconComponent={HomeRoundedIcon} title="Home" link='/#/' />
+                                    <ParentComponent iconComponent={NewspaperRoundedIcon} title="News" link='/#/news' />
+                                    <ParentComponent iconComponent={PeopleRoundedIcon} title="People" link='/#/people' />
+                                    <ParentComponent iconComponent={LibraryBooksRoundedIcon} title="Publications" link='/#/publications' />
+                                    <ParentComponent iconComponent={AccountTreeRoundedIcon} title="Projects" link='/#/projects' />
+                                    <ParentComponent iconComponent={MilitaryTechRoundedIcon} title="Awards" link='/#/awards' />
                                 </List>
                             </nav>
                         </Paper>
@@ -111,12 +111,12 @@ export default function Navbar(props) {
                     <Grid container item xs={9} justifyContent="flex-end" style={{ height: "100%" }}>
                         {QueryMinWidth720 ?
                             <>
-                                <Navtab link="/#/" title='Home' />
-                                <Navtab link="/#/news" title='News' />
-                                <Navtab link="/#/people" title='People' />
-                                <Navtab link="/#/publications" title='Publications' />
-                                <Navtab link="/#/projects" title='Projects' />
-                                <Navtab link="/#/awards" title='Awards' />
+                                <Navtab link="/" title='Home' />
+                                <Navtab link="/news" title='News' />
+                                <Navtab link="/people" title='People' />
+                                <Navtab link="/publications" title='Publications' />
+                                <Navtab link="/projects" title='Projects' />
+                                <Navtab link="/awards" title='Awards' />
                             </>
                             :
                             <>
@@ -139,7 +139,7 @@ function Navtab(props) {
     const classes = useStyles();
     return (
         <div style={{ padding: "0", margin: '0', height: "100%", textAlign: "center" }}>
-            <a href={props.link} className={classes.link} >{props.title}</a>
+            <Link to={props.link} className={classes.link} >{props.title}</Link>
         </div>
 
     )
