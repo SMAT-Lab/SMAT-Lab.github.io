@@ -27,7 +27,7 @@ export default function Home(props) {
                 <Grid xs={12} justifyContent="center" alignItems="center" item container style={{ textAlign: "center", position: "absolute", top: '50%', left: '50%', transform: ' translate(-50%, -50%)' }}>
                     <Grid xs={12} item container alignItems="center" style={{ maxWidth: '1344px', padding: "0 15px", height: "56px" }}>
                         <Typography align="justify" style={{ fontWeight: 900, color: "white", fontSize: "24px" }}>
-                            {"Software Analysis and Trustworthy Computing Lab @ MONASH"}
+                            {"SMart software Analysis and Trustworthy computing Lab @ MONASH"}
                         </Typography>
                         <Typography align="justify" style={{ fontWeight: 600, color: "white", fontSize: "16px" }}>
                             {"Towards Engineering High-quality and Secure Software Systems for Social Good"}
@@ -73,10 +73,10 @@ export default function Home(props) {
                     </Grid>
                     <Grid xs={12} sm={6} item container style={{ padding: "", }}>
                         <Grid xs={12} item container>
-                            <Typography align="justify" style={{ fontWeight: "18px", fontWeight: "700", }}>Software Analysis and Trustworthy Computing Lab @ MONASH</Typography>
+                            <Typography align="justify" style={{ fontWeight: "18px", fontWeight: "700", }}>SMAT Lab @ MONASH</Typography>
                         </Grid>
                         <Grid xs={12} item container>
-                            <Typography align="justify" style={{ fontWeight: "18px" }}>SMATLab (Software Analysis and Trustworthy Computing Lab) is part of the Intelligent Software Engineering research group at Monash University. The lab is leaded by Dr. Li Li. We are interested in developing practical techniques to assure software quality and secure software systems for social good.</Typography>
+                            <Typography align="justify" style={{ fontWeight: "18px" }}>SMAT Lab (SMart software Analysis and Trustworthy computing Lab) is part of the Software Engineering group at Monash University, Australia. The lab is led by Dr. Li Li (ARC DECRA Fellow 2020). We are interested in developing practical techniques to assure software quality and secure software systems for social good.</Typography>
                         </Grid>
                     </Grid>
                 </Grid>
