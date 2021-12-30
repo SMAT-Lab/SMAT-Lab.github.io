@@ -79,6 +79,14 @@ export default function Navbar(props) {
         }
     }, [QueryMinWidth720])
 
+    const listenToPopstate = () => {
+        setOpen(false);
+     };
+
+    window.addEventListener("popstate", listenToPopstate);
+
+
+
     return (
         <>
             <Popper open={open} anchorEl={anchorEl} placement={placement} transition style={{ width: "100%" }}>
@@ -121,10 +129,11 @@ export default function Navbar(props) {
                             :
                             <>
                                 <Button onClick={handleClick('bottom-end')} variant="text" style={{ color: "white" }}>
-                                    {open?
-                                    <HighlightOffRoundedIcon/>
-                                    :
-                                    <MenuRoundedIcon />}
+                                    {open ?
+                                        <HighlightOffRoundedIcon />
+                                        :
+                                        <MenuRoundedIcon />
+                                    }
                                 </Button>
                             </>
                         }
