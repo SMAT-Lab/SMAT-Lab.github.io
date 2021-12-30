@@ -43,7 +43,7 @@ export default function Home(props) {
             <Grid justifyContent="center" alignItems="center" xs={12} item container style={{ maxWidth: '1344px', padding: "15px", }}>
                 <Grid xs={12} item container style={{ padding: "15px" }} >
                     <LatestNewsLine>
-                        <b style={{ fontWeight: 900, fontSize: "28px" }}>Latest News</b>  <span style={{ fontWeight: 700, fontSize: "18px" }}> (<MyLink href="/news">more</MyLink>) </span>
+                        <b style={{ fontWeight: 900, fontSize: "28px" }}>Latest News</b>  <span style={{ fontWeight: 700, fontSize: "18px" }}> (<MyLink href="/#/news">more</MyLink>) </span>
                     </LatestNewsLine>
                     <LatestNewsLine dateTime="Dec. 6, 2021">
                         Four papers accepted to ICSE 2022 (ICSE is the best conference in Software Engineering).
