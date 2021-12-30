@@ -39,13 +39,6 @@ export default function Projects(props) {
                     
             </SubPageWrapper>
             <SubPageWrapper title="Funded Research Projects (Completed)">  
-            <!--              
-                    <MyLi >
-                        safsfsfsdsafsfsf
-                        d <MyLink href="https://www.google.com/" >dsfdddds=+d</MyLink> d
-                        sdsafsfsfsdsafsfsfsdsaf asfsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsd
-                    </MyLi>
-           -->
             </SubPageWrapper>
         </PageWrapper>
     );
