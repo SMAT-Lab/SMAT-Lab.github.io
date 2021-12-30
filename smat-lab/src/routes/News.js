@@ -23,16 +23,9 @@ export default function News(props) {
             
                 <Timeline position='right' style={{ padding: "0", borderRadius: "0px" }}>
                     <MyTimelineItem yearLabel="2021" />
-                    <MyTimelineItem dateTime="SEP. 25, 2021">
-                        Our work on assesing Android third-party library detection tools has been accepted to (<MyLink href="/news">TSE</MyLink>).
+                    <MyTimelineItem dateTime="Dec. 06, 2021">
+                        Four papers accepted to ICSE 2022 (ICSE is the best conference in Software Engineering).
                     </MyTimelineItem>
-                    <MyTimelineItem dateTime="SEP. 26, 2021">
-                        Our work on assesing Android third-party library detection tools has been accepted to (<MyLink href="/news">TSE</MyLink>).
-                    </MyTimelineItem>
-                    <MyTimelineItem yearLabel="2020" />
-                    <MyTimelineItem dateTime="SEP. 27, 2020">
-                        Our work on assesing Android third-party library detection tools has been accepted to (<MyLink href="/news">TSE</MyLink>).
-                    </MyTimelineItem>                
                 </Timeline>
         </PageWrapper>
     );

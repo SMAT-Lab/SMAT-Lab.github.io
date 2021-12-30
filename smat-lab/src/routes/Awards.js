@@ -13,15 +13,11 @@ export default function Awards(props) {
     return (
         <PageWrapper showDivider={true} title="Awards Obtained by Our Group">
             <ol>
-                <MyLi >
-                    safsfsfsdsafsfsf
-                    d <MyLink href="https://www.google.com/" >dsfdddds=+d</MyLink> d
-                    sdsafsfsfsdsafsfsfsdsaf asfsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsdsafsfsfsd
-                </MyLi>
-                <MyLi>In another bowl, mix eggs, milk, and oil.</MyLi>
-                <MyLi>Stir both mixtures together.</MyLi>
-                <MyLi>Fill muffin tray 3/4 full.</MyLi>
-                <MyLi>Bake for 20 minutes.</MyLi>
+                <MyLi >ACM SIGPLAN Distinguished Paper Award at PLDI 2021</MyLi>
+                <MyLi>Best Student Paper Award at WWW 2020</MyLi>
+                <MyLi>ACM SIGSOFT Distinguished Paper Award at ASE 2018</MyLi>
+                <MyLi>FOSS Impact Paper Award at MSR 2018</MyLi>
+                <MyLi>Best Paper Award at SANER-ERA 2016</MyLi>
             </ol>
         </PageWrapper>
     );

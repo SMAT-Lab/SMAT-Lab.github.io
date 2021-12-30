@@ -45,12 +45,9 @@ export default function Home(props) {
                     <LatestNewsLine>
                         <b style={{ fontWeight: 900, fontSize: "28px" }}>Latest News</b>  <span style={{ fontWeight: 700, fontSize: "18px" }}> (<MyLink href="/news">more</MyLink>) </span>
                     </LatestNewsLine>
-                    <LatestNewsLine dateTime="SEP. 27, 2020">
-                        Our work on assesing Android third-party library detection tools has been accepted to (<MyLink href="/news">TSE</MyLink>).
-                    </LatestNewsLine>
-                    <LatestNewsLine dateTime="SEP. 28, 2020">
-                        Our work on assesing Android third-party library detection tools has been accepted to (<MyLink href="/news">TSE</MyLink>).
-                    </LatestNewsLine>        
+                    <LatestNewsLine dateTime="Dec. 6, 2021">
+                        Four papers accepted to ICSE 2022 (ICSE is the best conference in Software Engineering).
+                    </LatestNewsLine>   
                 </Grid>
 
                 <Grid xs={12} item container style={{ padding: "15px" }} >
@@ -76,7 +73,10 @@ export default function Home(props) {
                             <Typography align="justify" style={{ fontWeight: "18px", fontWeight: "700", }}>SMAT Lab @ MONASH</Typography>
                         </Grid>
                         <Grid xs={12} item container>
-                            <Typography align="justify" style={{ fontWeight: "18px" }}>SMAT Lab (SMart software Analysis and Trustworthy computing Lab) is part of the Software Engineering group at Monash University, Australia. The lab is led by Dr. Li Li (ARC DECRA Fellow 2020). We are interested in developing practical techniques to assure software quality and secure software systems for social good.</Typography>
+                            <Typography align="justify" style={{ fontWeight: "18px" }}>
+                            SMAT Lab (SMart software Analysis and Trustworthy computing Lab) is part of the Software Engineering group at Monash University, Australia. 
+                            The lab is led by Dr. Li Li (ARC DECRA Fellow 2020). 
+                            We are interested in developing practical techniques to assure software quality and secure software systems for social good.</Typography>
                         </Grid>
                     </Grid>
                 </Grid>

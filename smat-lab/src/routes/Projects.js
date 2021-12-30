@@ -11,35 +11,24 @@ export default function Projects(props) {
 
     return (
 
-        <PageWrapper showDivider={true} title="Projects of Our Group">
+        <PageWrapper showDivider={true} title="Software Projects">
 
-            <SubPageWrapper title="Software Projects">    
-                    <MyLi> 
-                    <Grid xs={12} sm={6} item container style={{ padding: "", }}>
-                        <Grid xs={12} item container>
-                            <Typography align="justify" style={{ fontWeight: "18px", fontWeight: "700", }}>Scalpel: The Python Static Analysis Framework</Typography>
-                        </Grid>
-                        <Grid xs={12} item container>
-                            <Typography align="justify" style={{ fontWeight: "18px" }}>
-                                Scalpel is a Python Static Analysis Framework. 
-                                It provides essential program analysis functions for facilitating the implementation of client applications focusing on statically resolving dedicated problems in Python code.
-                            </Typography>
-                        </Grid>
-                        <Grid xs={12} item container>
-                            <Typography align="justify" style={{ fontWeight: "18px" }}>
-                                Website: https://github.com/SMAT-Lab/Scalpel
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    </MyLi>
+            <SubPageWrapper title="Scalpel: The Python Static Analysis Framework">    
+            Scalpel is a Python Static Analysis Framework. 
+            It provides essential program analysis functions for facilitating the implementation of client applications focusing on statically resolving dedicated problems in Python code.
             </SubPageWrapper>
 
+            <b>URL:</b> <MyLink href="https://github.com/SMAT-Lab/Scalpel">https://github.com/SMAT-Lab/Scalpel</MyLink>
 
-            <SubPageWrapper title="Funded Research Projects (Ongoing)">    
-                    
+
+            <SubPageWrapper title="AppScanner: Scanning Android apps for compatibility issues">    
+            AppScanner is an online apk scanning service developed by a group of Monash students.
+            AppScanner aims at providing a reliable online scanning service for pinpointing compatibility issues in Android apps. AppScanner endeavors to take into account all the possible types of compatibility issues, 
+            including not only framework evolution-induced ones but also the device-specific ones brought by the tremendous fragmentation problem faced by the Android ecosystem.
             </SubPageWrapper>
-            <SubPageWrapper title="Funded Research Projects (Completed)">  
-            </SubPageWrapper>
+
+            <b>URL:</b> <MyLink href="http://appscanner.com.au/">http://appscanner.com.au/</MyLink>
         </PageWrapper>
+
     );
 }
