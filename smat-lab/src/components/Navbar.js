@@ -111,12 +111,12 @@ export default function Navbar(props) {
                     <Grid container item xs={9} justifyContent="flex-end" style={{ height: "100%" }}>
                         {QueryMinWidth720 ?
                             <>
-                                <Navtab link="/" title='Home' />
-                                <Navtab link="/news" title='News' />
-                                <Navtab link="/people" title='People' />
-                                <Navtab link="/publications" title='Publications' />
-                                <Navtab link="/projects" title='Projects' />
-                                <Navtab link="/awards" title='Awards' />
+                                <Navtab link="/#/" title='Home' />
+                                <Navtab link="/#/news" title='News' />
+                                <Navtab link="/#/people" title='People' />
+                                <Navtab link="/#/publications" title='Publications' />
+                                <Navtab link="/#/projects" title='Projects' />
+                                <Navtab link="/#/awards" title='Awards' />
                             </>
                             :
                             <>
@@ -139,7 +139,7 @@ function Navtab(props) {
     const classes = useStyles();
     return (
         <div style={{ padding: "0", margin: '0', height: "100%", textAlign: "center" }}>
-            <Link to={props.link} className={classes.link} >{props.title}</Link>
+            <a href={props.link} className={classes.link} >{props.title}</a>
         </div>
 
     )
