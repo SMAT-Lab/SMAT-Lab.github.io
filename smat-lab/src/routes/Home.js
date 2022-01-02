@@ -4,6 +4,8 @@ import moansh from '../components/Home/bridge.jpg'
 import group from '../components/Home/group.jpg'
 
 import Typography from '@material-ui/core/Typography';
+import SubPageWrapper from '../components/SubPageWrapper';
+import MyLi from '../components/MyLi';
 import MyLink from '../components/MyLink';
 
 export default function Home(props) {
@@ -76,7 +78,16 @@ export default function Home(props) {
                             <Typography align="justify" style={{ fontWeight: "18px" }}>
                             SMAT Lab (SMart software Analysis and Trustworthy computing Lab) is part of the Software Engineering group at Monash University, Australia. 
                             The lab is led by Dr. Li Li (ARC DECRA Fellow 2020). 
-                            We are interested in developing practical techniques to assure software quality and secure software systems for social good.</Typography>
+                            We are interested in developing practical techniques to assure software quality and secure software systems for social good.
+                            In particular, our research mainly lies in the following directions:
+                            <br />
+                            <b>Mobile Software Engineering</b>
+                            <br />
+                            * Mobile Security <br />
+                            * Mobile App Quality Assurance <br />
+                            <b>Intelligent Software Engineering</b> <br />
+                            * Artificial Intelligence for Software Engineering (AI4SE) <br />
+                            * Software Engineering for Artificial Intelligence (SE4AI) </Typography>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -19,9 +19,6 @@ export default function People(props) {
                 <MyProfile name="Yonghui Liu"/>
             </SubPageWrapper>
 
-            <SubPageWrapper title="Undergraduate Students">
-
-            </SubPageWrapper>
 
             <SubPageWrapper title="RA/Visitors" profile={true}>
 
