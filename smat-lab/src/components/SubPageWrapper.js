@@ -11,33 +11,49 @@ export default function SubPageWrapper(props) {
                     {props.title}
                 </Typography>
             </Grid>
-            <Grid xs={12} container justifyContent="flex-start" item>
-                {
-                    props.image &&
-                    <Grid container item xs={12}  >
-                        <img
-                            src={props.image}
-                            style={{
-                                width: "100%",
-                                height: "280px",
-                                zIndex: "-1",
-                                objectFit: "cover",
-                            }}
-                        />
-                    </Grid>
-                }
+            <Grid xs={12} container justifyContent="flex-start" item style={{ paddingBottom: "10px" }}>
+                {props.isProject ?
+                    <>
+                        {
+                            props.image ?
+                                <>
+                                    <Grid container item xs={12} sm={6}  >
+                                        <img
+                                            src={props.image}
+                                            style={{
+                                                width: "100%",
+                                                height: "280px",
+                                                zIndex: "-1",
+                                                objectFit: "cover",
+                                            }}
+                                        />
+                                    </Grid>
 
-                {props.profile ?
-                    <Grid container spacing={2}>
-                        {props.children}
-                    </Grid>
+                                    <Grid container item xs={12} sm={6}>
+                                        <Typography align="justify" style={{ fontWeight: "18px", padding: "6px 10px 0", }}>
+                                            {props.children}
+                                        </Typography>
+                                    </Grid>
+                                </>
+                                :
+                                <Typography align="justify" style={{ fontWeight: "18px", padding: "6px 10px 0" }}>
+                                    {props.children}
+                                </Typography>
+                        }
+                    </>
                     :
-
-                    <ol style={{ margin: '4px 0' }}>
-                        {props.children}
-                    </ol>
+                    <>
+                        {props.profile ?
+                            <Grid container spacing={2}>
+                                {props.children}
+                            </Grid>
+                            :
+                            <ol style={{ margin: '4px 0' }}>
+                                {props.children}
+                            </ol>
+                        }
+                    </>
                 }
-
             </Grid>
         </>
     );

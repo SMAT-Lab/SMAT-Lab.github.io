@@ -15,7 +15,11 @@ export default function Projects(props) {
 
         <PageWrapper showDivider={true} title="Software Projects">
 
-            <SubPageWrapper title="Scalpel: The Python Static Analysis Framework" isProject={true} image={require("../utility/project/pic/scenic.jpg")}>                
+            <SubPageWrapper 
+                title="Scalpel: The Python Static Analysis Framework" 
+                isProject 
+                image={require("../utility/project/pic/scenic.jpg")}
+            >                
                 Scalpel is a Python Static Analysis Framework.
                 It provides essential program analysis functions for facilitating the implementation of client applications focusing on statically resolving dedicated problems in Python code.
             </SubPageWrapper>
