@@ -3,13 +3,18 @@ import MyLink from '../MyLink';
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import allMemberProfile from '../../utility/profile/AllMemberProfile.js'
+import PersonIcon from '@mui/icons-material/Person';
 
 export default function MyProfile(props) {
     return (
         <Grid xs={12} sm={6} md={3} container item spacing={1}>
             <Grid item>
-                <div style={{ width: 96, height: 96, backgroundColor: "green" }}>
-                    <img style={{ width: 96, height: 96, backgroundColor: "green" }} src={allMemberProfile[`${props.name}`].profileDirectory} />
+                <div style={{ width: 96, height: 96, backgroundColor: "white" }}>
+                    {allMemberProfile[`${props.name}`].profileDirectory ?
+                        <img style={{ width: 96, height: 96, backgroundColor: "white" }} src={allMemberProfile[`${props.name}`].profileDirectory} />
+                        :
+                        <img style={{ width: 96, height: 96, backgroundColor: "white" }} src={require("../../utility/profile/pic/avatar.png")} />
+                    }
                 </div>
             </Grid>
 

@@ -7,17 +7,33 @@ export default function SubPageWrapper(props) {
     return (
         <>
             <Grid xs={12} container justifyContent="flex-start" item>
-                <Typography style={{ fontWeight: "900", fontSize: "20px", minWidth: "230px", padding: " 30px 0px 20px" }}>
+                <Typography style={{ fontWeight: "900", fontSize: "20px", minWidth: "230px", paddingTop: "30px", paddingBottom: props.isProject ? "0px" : "20px" }}>
                     {props.title}
                 </Typography>
             </Grid>
             <Grid xs={12} container justifyContent="flex-start" item>
+                {
+                    props.image &&
+                    <Grid container item xs={12}  >
+                        <img
+                            src={props.image}
+                            style={{
+                                width: "100%",
+                                height: "280px",
+                                zIndex: "-1",
+                                objectFit: "cover",
+                            }}
+                        />
+                    </Grid>
+                }
+
                 {props.profile ?
                     <Grid container spacing={2}>
                         {props.children}
                     </Grid>
                     :
-                    <ol style={{ margin: 0 }}>
+
+                    <ol style={{ margin: '4px 0' }}>
                         {props.children}
                     </ol>
                 }
