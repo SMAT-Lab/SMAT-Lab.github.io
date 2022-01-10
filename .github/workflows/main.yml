@@ -27,7 +27,7 @@ jobs:
         
       # Enter react file
       - name: Enter React File
-        run: cd smat-lab 
+        run: cd ./smat-lab 
 
       # Runs a single command using the runners shell
       - name: Install and build
