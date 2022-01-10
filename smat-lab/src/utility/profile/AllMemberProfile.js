@@ -7,8 +7,9 @@ const AllMemberProfile = {
     },
     "Xiao Chen":{
         "nameDisplayed":"Xiao Chen",
+        "nameLink":"https://research.monash.edu/en/persons/xiao-chen", 
         "description":"Research Fellow",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/xiaochen.jpg")
     },
     "Yonghui Liu":{
         "nameDisplayed":"Yonghui Liu",
