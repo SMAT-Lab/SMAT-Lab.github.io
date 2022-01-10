@@ -29,5 +29,5 @@ jobs:
       - name: npm ci, build and test
         run: |
           cd smat-lab
-          npm ci
+          npm i
           npm run build
