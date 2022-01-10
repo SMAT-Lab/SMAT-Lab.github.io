@@ -33,8 +33,9 @@ const AllMemberProfile = {
     },
     "Pei Liu":{
         "nameDisplayed":"Pei Liu",
+        "nameLink":"https://github.com/gspeiliu", 
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/peiliu.jpg")
     },
     "Xiaoyu Sun":{
         "nameDisplayed":"Xiaoyu Sun",
@@ -44,8 +45,9 @@ const AllMemberProfile = {
     },
     "Yanjie Zhao":{
         "nameDisplayed":"Yanjie Zhao",
+        "nameLink":"https://github.com/carol233", 
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/yanjie.zhao.jpg")
     },
     "Mingyi Zhou":{
         "nameDisplayed":"Mingyi Zhou",

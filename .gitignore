@@ -1,0 +1,21 @@
+###################################
+# general ignore patterns
+###################################
+
+build/
+obj/
+*.o
+Debug*/
+Release*/
+*.mode*
+*.app/
+*.pyc
+.svn/
+
+# Linux
+*~
+
+# OSX
+**/.DS_Store
+.DS_Store
+*.swp
