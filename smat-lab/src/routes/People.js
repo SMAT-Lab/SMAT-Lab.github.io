@@ -35,6 +35,7 @@ export default function People(props) {
 
             <SubPageWrapper title="Alumni" profile={true}>
                 <MyProfile name="Dabao Wang"/>
+                <MyProfile name="Jun Gao"/>
 
             </SubPageWrapper>
         </PageWrapper>

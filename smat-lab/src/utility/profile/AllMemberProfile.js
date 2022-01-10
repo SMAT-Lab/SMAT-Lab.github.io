@@ -64,7 +64,12 @@ const AllMemberProfile = {
         "name":"Dabao Wang",
         "description":"Hornor Thesis Student of Monash",
         "profileDirectory":''
-    }
+    },
+    "Jun Gao":{
+        "name":"Jun Gao",
+        "description":"PhD Student of Luxembourg",
+        "profileDirectory":''
+    },
 }
 
 export default AllMemberProfile
