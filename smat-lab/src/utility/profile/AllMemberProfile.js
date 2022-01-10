@@ -13,6 +13,7 @@ const AllMemberProfile = {
     },
     "Yonghui Liu":{
         "nameDisplayed":"Yonghui Liu",
+        "nameLink":"https://github.com/DannyGooo", 
         "description":"Master Student of Monash",
         "profileDirectory":require("../../utility/profile/pic/Yonghui_Liu.jpg")
     },
@@ -52,6 +53,7 @@ const AllMemberProfile = {
     "Mingyi Zhou":{
         "nameDisplayed":"Mingyi Zhou",
         "description":"PhD Student of Monash",
+        "nameLink":"https://github.com/zhoumingyi", 
         "profileDirectory": require("../../utility/profile/pic/mingyi.zhou.jpg")
     },
     "Md Shamsujjoha":{
