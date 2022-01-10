@@ -27,11 +27,11 @@ jobs:
         
       # Enter react file
       - name: Enter React File
-        run: cd ./smat-lab 
+        run: cd ./smat-lab && pwd
 
       # Runs a single command using the runners shell
       - name: Install and build
-        run: npm install && npm run build
+        run: pwd && npm install && npm run build
 
       # Runs a set of commands using the runners shell
       - name: Deploy
