@@ -52,7 +52,7 @@ const AllMemberProfile = {
     "Mingyi Zhou":{
         "nameDisplayed":"Mingyi Zhou",
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory": require("../../utility/profile/pic/mingyi.zhou.jpg")
     },
     "Md Shamsujjoha":{
         "nameDisplayed":"Md Shamsujjoha",
