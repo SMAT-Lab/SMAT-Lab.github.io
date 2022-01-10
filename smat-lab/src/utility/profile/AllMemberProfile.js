@@ -2,7 +2,7 @@ const AllMemberProfile = {
     "Li Li":{
         "nameDisplayed":"Li Li",
         "nameLink":"https://lilicoding.github.io/", 
-        "description":"Associate Professor of Monash",
+        "description":"Senior Lecturer",
         "profileDirectory":"https://raw.githubusercontent.com/lilicoding/lilicoding.github.io/master/images/lili.png",       
     },
     "Xiao Chen":{
