@@ -30,4 +30,4 @@ jobs:
         run: |
           cd smat-lab
           npm ci
-          npm run deploy
+          npm run build
