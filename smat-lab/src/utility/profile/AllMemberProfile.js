@@ -38,7 +38,7 @@ const AllMemberProfile = {
     "Xiaoyu Sun":{
         "nameDisplayed":"Xiaoyu Sun",
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/Xiaoyu.sun.jpeg"
     },
     "Yanjie Zhao":{
         "nameDisplayed":"Yanjie Zhao",
