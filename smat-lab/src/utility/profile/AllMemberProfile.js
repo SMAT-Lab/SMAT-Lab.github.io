@@ -61,7 +61,7 @@ const AllMemberProfile = {
         "profileDirectory":''
     },
     "Juncai Guo":{
-        "nameDisplayed":"Haowei Quan",
+        "nameDisplayed":"Juncai Guo",
         "description":"PhD Student of Monash",
         "profileDirectory":''
     },
