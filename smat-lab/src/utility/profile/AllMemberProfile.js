@@ -37,6 +37,7 @@ const AllMemberProfile = {
     },
     "Xiaoyu Sun":{
         "nameDisplayed":"Xiaoyu Sun",
+        "nameLink":"https://sunxiaobiu.github.io/", 
         "description":"PhD Student of Monash",
         "profileDirectory":require("../../utility/profile/pic/Xiaoyu.sun.jpeg"
     },
