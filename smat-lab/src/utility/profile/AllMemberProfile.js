@@ -59,6 +59,11 @@ const AllMemberProfile = {
         "name":"Haowei Quan",
         "description":"PhD Student of Monash",
         "profileDirectory":''
+    },
+    "Dabao Wang":{
+        "name":"Dabao Wang",
+        "description":"Hornor Thesis Student of Monash",
+        "profileDirectory":''
     }
 }
 
