@@ -57,7 +57,7 @@ export default function Home(props) {
                 </Grid>
 
                 <Grid justifyContent="flex-start" alignItems="flex-start" xs={12} spacing={2} item container style={{ padding: "0px", }} >
-                    <Grid container item xs={12} sm={6} style={{ height: "" }}>
+                    <Grid container item xs={12} md={6} style={{ height: "" }}>
                         <img
                             src={group}
                             style={{
@@ -70,7 +70,7 @@ export default function Home(props) {
                             }}
                         />
                     </Grid>
-                    <Grid xs={12} sm={6} item container style={{ padding: "", }}>
+                    <Grid xs={12} md={6} item container style={{ padding: "", }}>
                         <Grid xs={12} item container>
                             <Typography align="justify" style={{ fontWeight: "18px", fontWeight: "700", }}>SMAT Lab @ MONASH</Typography>
                         </Grid>

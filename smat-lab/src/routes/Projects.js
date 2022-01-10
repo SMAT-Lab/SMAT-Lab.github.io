@@ -19,6 +19,8 @@ export default function Projects(props) {
                 title="Scalpel: The Python Static Analysis Framework" 
                 isProject 
                 image={require("../utility/project/pic/scenic.jpg")}
+                imageHeight='270px'
+
             >                
                 Scalpel is a Python Static Analysis Framework.
                 It provides essential program analysis functions for facilitating the implementation of client applications focusing on statically resolving dedicated problems in Python code.
@@ -31,6 +33,7 @@ export default function Projects(props) {
                 title="AppScanner: Scanning Android apps for compatibility issues" 
                 isProject
                 image={require("../utility/project/pic/appScanner.jpg")}
+                imageHeight='210px'
             >
                 AppScanner is an online apk scanning service developed by a group of Monash students.
                 AppScanner aims at providing a reliable online scanning service for pinpointing compatibility issues in Android apps. AppScanner endeavors to take into account all the possible types of compatibility issues,

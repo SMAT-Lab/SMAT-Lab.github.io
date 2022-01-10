@@ -17,19 +17,19 @@ export default function SubPageWrapper(props) {
                         {
                             props.image ?
                                 <>
-                                    <Grid container item xs={12} sm={4}  >
+                                    <Grid container item xs={12} md={4}  >
                                         <img
                                             src={props.image}
                                             style={{
                                                 width: "100%",
-                                                height: "280px",
+                                                height: props.imageHeight,
                                                 zIndex: "-1",
                                                 objectFit: "cover",
                                             }}
                                         />
                                     </Grid>
 
-                                    <Grid container item xs={12} sm={8}>
+                                    <Grid container item xs={12} md={8}>
                                         <Typography align="justify" style={{ fontWeight: "18px", padding: "6px 10px 0", }}>
                                             {props.children}
                                         </Typography>
