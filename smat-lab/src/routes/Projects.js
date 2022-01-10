@@ -27,7 +27,11 @@ export default function Projects(props) {
             <b>URL:</b> <MyLink href="https://github.com/SMAT-Lab/Scalpel">https://github.com/SMAT-Lab/Scalpel</MyLink>
 
 
-            <SubPageWrapper title="AppScanner: Scanning Android apps for compatibility issues" isProject>
+            <SubPageWrapper 
+                title="AppScanner: Scanning Android apps for compatibility issues" 
+                isProject
+                image={require("../utility/project/pic/appScanner.jpg")}
+            >
                 AppScanner is an online apk scanning service developed by a group of Monash students.
                 AppScanner aims at providing a reliable online scanning service for pinpointing compatibility issues in Android apps. AppScanner endeavors to take into account all the possible types of compatibility issues,
                 including not only framework evolution-induced ones but also the device-specific ones brought by the tremendous fragmentation problem faced by the Android ecosystem.

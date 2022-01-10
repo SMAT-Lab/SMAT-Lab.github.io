@@ -11,8 +11,9 @@ export default function People(props) {
 
     return (
         <PageWrapper showDivider={true} title="Our Group Members">
-            <SubPageWrapper title="Faculty" profile={true}>
+            <SubPageWrapper title="Faculty/Researchers" profile={true}>
                 <MyProfile name="Li Li"/>
+                <MyProfile name="Xiao Chen"/>
             </SubPageWrapper>
 
             <SubPageWrapper title="Postgraduate Students" profile={true}>
@@ -30,13 +31,14 @@ export default function People(props) {
 
 
             <SubPageWrapper title="RA/Visitors" profile={true}>
-
+                <MyProfile name="Juncai Guo"/>
             </SubPageWrapper>
 
             <SubPageWrapper title="Alumni" profile={true}>
-                <MyProfile name="Dabao Wang"/>
+                <MyProfile name="Pingfan Kong"/>
                 <MyProfile name="Jun Gao"/>
-
+                <MyProfile name="Ayesha Sadiq"/>
+                <MyProfile name="Dabao Wang"/>
             </SubPageWrapper>
         </PageWrapper>
     );

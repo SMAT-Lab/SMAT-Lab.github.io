@@ -17,7 +17,7 @@ export default function SubPageWrapper(props) {
                         {
                             props.image ?
                                 <>
-                                    <Grid container item xs={12} sm={6}  >
+                                    <Grid container item xs={12} sm={4}  >
                                         <img
                                             src={props.image}
                                             style={{
@@ -29,7 +29,7 @@ export default function SubPageWrapper(props) {
                                         />
                                     </Grid>
 
-                                    <Grid container item xs={12} sm={6}>
+                                    <Grid container item xs={12} sm={8}>
                                         <Typography align="justify" style={{ fontWeight: "18px", padding: "6px 10px 0", }}>
                                             {props.children}
                                         </Typography>

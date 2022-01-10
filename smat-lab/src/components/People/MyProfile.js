@@ -23,7 +23,7 @@ export default function MyProfile(props) {
                     <Grid item container>
                         <Typography align="justify" style={{ wordBreak: 'break-all', fontWeight: 600 }}>
                             <MyLink href={allMemberProfile[`${props.name}`].nameLink}>
-                                {props.name}
+                                {allMemberProfile[`${props.name}`].nameDisplayed}
                             </MyLink>
                         </Typography>
                     </Grid>
