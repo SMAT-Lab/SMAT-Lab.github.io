@@ -11,7 +11,7 @@ export default function MyProfile(props) {
             <Grid item>
                 <div style={{ width: 96, height: 96, backgroundColor: "white" }}>
                     {allMemberProfile[`${props.name}`].profileDirectory ?
-                        <img style={{ width: 96, height: 96, backgroundColor: "white" }} src={allMemberProfile[`${props.name}`].profileDirectory} />
+                        <img style={{ width: '100%', height:'100%', objectFit: 'cover',zIndex: "-1", backgroundColor: "white" }} src={allMemberProfile[`${props.name}`].profileDirectory} />
                         :
                         <img style={{ width: 96, height: 96, backgroundColor: "white" }} src={require("../../utility/profile/pic/avatar.png")} />
                     }
