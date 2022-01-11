@@ -7,8 +7,9 @@ const AllMemberProfile = {
     },
     "Xiao Chen":{
         "nameDisplayed":"Xiao Chen",
+        "nameLink":"https://research.monash.edu/en/persons/xiao-chen", 
         "description":"Research Fellow",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/xiaochen.jpg")
     },
     "Yonghui Liu":{
         "nameDisplayed":"Yonghui Liu",
@@ -32,23 +33,26 @@ const AllMemberProfile = {
     },
     "Pei Liu":{
         "nameDisplayed":"Pei Liu",
+        "nameLink":"https://github.com/gspeiliu", 
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/peiliu.jpg")
     },
     "Xiaoyu Sun":{
         "nameDisplayed":"Xiaoyu Sun",
+        "nameLink":"https://sunxiaobiu.github.io/", 
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/Xiaoyu.sun.jpeg")
     },
     "Yanjie Zhao":{
         "nameDisplayed":"Yanjie Zhao",
+        "nameLink":"https://github.com/carol233", 
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/yanjie.zhao.jpg")
     },
     "Mingyi Zhou":{
         "nameDisplayed":"Mingyi Zhou",
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory": require("../../utility/profile/pic/mingyi.zhou.jpg")
     },
     "Md Shamsujjoha":{
         "nameDisplayed":"Md Shamsujjoha",
