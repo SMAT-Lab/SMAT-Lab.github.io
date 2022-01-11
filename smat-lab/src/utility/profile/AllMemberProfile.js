@@ -19,8 +19,9 @@ const AllMemberProfile = {
     },
     "Tianming Liu":{
         "nameDisplayed":"Tianming Liu",
+		"nameLink":"https://scholar.google.com/citations?user=nT5DxnMAAAAJ&hl=en", 
         "description":"PhD Student of Monash",
-        "profileDirectory":''
+        "profileDirectory":require("../../utility/profile/pic/tianming.jpg")
     },
     "Yue Liu":{
         "nameDisplayed":"Yue Liu",
