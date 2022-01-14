@@ -12,7 +12,7 @@ export default function Publication(props) {
     return (
         <PageWrapper showDivider={true} title="Publications of Our Group">
 
-            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 3, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 4, TheWebConf * 3"></SubPageWrapper>
+            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 3, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 4, POPL * 1, PLDI * 1, TheWebConf * 5"></SubPageWrapper>
 
             <SubPageWrapper title="ACM TOSEM">
                 
@@ -78,7 +78,17 @@ export default function Publication(props) {
                 <MyLi>Li Li, Tegawendé F. Bissyandé, Damien Octeau and Jacques Klein, DroidRA: Taming Reflection to Support Whole-Program Analysis of Android Apps, The 2016 International Symposium on Software Testing and Analysis (ISSTA 2016), 2016</MyLi>
             </SubPageWrapper>
 
+            <SubPageWrapper title="POPL">
+                <MyLi>Damien Octeau, Somesh Jha, Matthew Dering, Patrick McDaniel, Alexandre Bartel, Li Li, Jacques Klein and Yves Le Traon, Combining Static Analysis with Probabilistic Models to Enable Market-Scale Android Inter-component Analysis, The 43rd Symposium on Principles of Programming Languages (POPL 2016), 2016</MyLi>
+            </SubPageWrapper>
+
+            <SubPageWrapper title="PLDI">
+                <MyLi>Xiaolei Ren, Michael Ho, Jiang Ming, Jeff Y. Lei, Li Li, Unleashing the Hidden Power of Compiler Optimization on Binary Code Difference: An Empirical Study, The 42nd ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI 2021), 2021</MyLi>
+            </SubPageWrapper>
+
             <SubPageWrapper title="TheWebConf (WWW)">
+                <MyLi>Zhensu Sun, Xiaoning Du, Fu Song, Mingze Ni and Li Li, CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning, The ACM Web Conference (WWW 2022), 2022</MyLi>
+                <MyLi>Guosheng Xu, Siyi Li, Hao Zhou, Shucen Liu, Yutian Tang, Li Li, Xiapu Luo, Xusheng Xiao, Guoai Xu and Haoyu Wang, Lie to Me: Abusing the Mobile Content Sharing Service for Fun and Profit, The ACM Web Conference (WWW 2022), 2022</MyLi>
                 <MyLi>Yuhao Gao, Haoyu Wang, Li Li, Xiapu Luo, Xuanzhe Liu and Guoai Xu, Demystifying Illegal Mobile Gambling Apps, The Web Conference 2021 (WWW 2021), 2021</MyLi>
                 <MyLi>Tianming Liu, Haoyu Wang, Li Li, Xiapu Luo, Feng Dong, Yao Guo, Liu Wang, Tegawendé F. Bissyandé and Jacques Klein, MadDroid: Characterising and Detecting Devious Ad Content for Android Apps, The Web Conference 2020 (WWW 2020), 2020</MyLi>
                 <MyLi>Yangyu Hu, Haoyu Wang, Ren He, Li Li, Gareth Tyson, Ignacio Castro, Yao Guo, Lei Wu, and Guoai Xu, Mobile App Squatting, The Web Conference 2020 (WWW 2020), 2020</MyLi>

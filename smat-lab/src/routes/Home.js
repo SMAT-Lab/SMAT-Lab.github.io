@@ -47,6 +47,9 @@ export default function Home(props) {
                     <LatestNewsLine>
                         <b style={{ fontWeight: 900, fontSize: "28px" }}>Latest News</b>  <span style={{ fontWeight: 700, fontSize: "18px" }}> (<MyLink href="/#/news">more</MyLink>) </span>
                     </LatestNewsLine>
+                    <LatestNewsLine dateTime="Jan. 14, 2022">
+                        Two papers accepted to TheWebConf 2022. Big congraduations to Zhensu and Guosheng.
+                    </LatestNewsLine> 
                     <LatestNewsLine dateTime="Dec. 6, 2021">
                         Four papers accepted to ICSE 2022 (ICSE is the best conference in Software Engineering).
                     </LatestNewsLine>   

@@ -21,6 +21,14 @@ export default function News(props) {
     return (
         <PageWrapper showDivider={true} title="News of Our Group">
             
+
+                <Timeline position='right' style={{ padding: "0", borderRadius: "0px" }}>
+                    <MyTimelineItem yearLabel="2022" />
+                    <MyTimelineItem dateTime="Jan. 14, 2022">
+                        Two papers accepted to TheWebConf 2022. Big congraduations to Zhensu and Guosheng.
+                    </MyTimelineItem>
+                </Timeline>
+
                 <Timeline position='right' style={{ padding: "0", borderRadius: "0px" }}>
                     <MyTimelineItem yearLabel="2021" />
                     <MyTimelineItem dateTime="Dec. 06, 2021">
