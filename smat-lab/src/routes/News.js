@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Timeline from '@mui/lab/Timeline';
@@ -8,37 +8,47 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import PageWrapper from '../components/PageWrapper';
-import MyLink from '../components/MyLink';
+import AllNews from '../utility/news/AllNews';
+
+
+
+
+var newsComponentArray=[]
+for (var keyOfNews in AllNews) {    
+    for(var index=AllNews[keyOfNews].length-1;index>=0;index--){
+        var eventOfNews = AllNews[keyOfNews][index]
+        newsComponentArray.unshift(
+            <MyTimelineItem dateTime={eventOfNews.date} key={eventOfNews.date+keyOfNews}>
+                {eventOfNews.content}
+            </MyTimelineItem>
+        )
+    }
+    newsComponentArray.unshift(
+        <MyTimelineItem yearLabel={keyOfNews} key={keyOfNews} />
+    )
+}
 
 
 
 
 export default function News(props) {
     useEffect(() => {
-        document.title = "SMAT Lab - News"
+        document.title = "SMAT Lab - News"        
     }, [])
-    
+
+
     return (
         <PageWrapper showDivider={true} title="News of Our Group">
-            
-
-                <Timeline position='right' style={{ padding: "0", borderRadius: "0px" }}>
-                    <MyTimelineItem yearLabel="2022" />
-                    <MyTimelineItem dateTime="Jan. 14, 2022">
-                        Two papers accepted to TheWebConf 2022. Big congraduations to Zhensu and Guosheng.
-                    </MyTimelineItem>
-                </Timeline>
-
-                <Timeline position='right' style={{ padding: "0", borderRadius: "0px" }}>
-                    <MyTimelineItem yearLabel="2021" />
-                    <MyTimelineItem dateTime="Dec. 06, 2021">
-                        Four papers accepted to ICSE 2022 (ICSE is the best conference in Software Engineering).
-                    </MyTimelineItem>
-                </Timeline>
+            <Timeline position='right' style={{ padding: "0", borderRadius: "0px" }}>
+                {newsComponentArray}
+            </Timeline>
         </PageWrapper>
     );
-
 }
+
+
+
+
 
 
 function MyTimelineItem(props) {
@@ -54,17 +64,15 @@ function MyTimelineItem(props) {
                         <div style={{ padding: "8px", backgroundColor: "grey", borderRadius: "50%" }}></div>
                     </Grid>
                 }
-
                 <TimelineConnector />
-
             </TimelineSeparator>
-            <TimelineContent style={{paddingBottom:"30px"}}>
+            <TimelineContent style={{ paddingBottom: "30px" }}>
                 {!props.yearLabel &&
                     <>
-                        <Typography  component="span" style={{ fontSize: "14px", fontWeight:800}}>
+                        <Typography component="span" style={{ fontSize: "14px", fontWeight: 800 }}>
                             {props.dateTime}
                         </Typography>
-                        <Typography align="justify" style={{wordBreak: 'break-all'}}>
+                        <Typography align="justify" style={{ wordBreak: 'break-all' }}>
                             {props.children}
                         </Typography>
                     </>
@@ -73,4 +81,5 @@ function MyTimelineItem(props) {
         </TimelineItem>
     );
 }
+
 

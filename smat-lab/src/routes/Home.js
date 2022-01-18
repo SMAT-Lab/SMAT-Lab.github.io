@@ -7,6 +7,27 @@ import Typography from '@material-ui/core/Typography';
 import SubPageWrapper from '../components/SubPageWrapper';
 import MyLi from '../components/MyLi';
 import MyLink from '../components/MyLink';
+import AllNews from '../utility/news/AllNews';
+
+
+
+
+var newsComponentArray = []
+for (var keyOfNews in AllNews) {
+    for (var index = AllNews[keyOfNews].length - 1; index >= 0; index--) {
+        var eventOfNews = AllNews[keyOfNews][index]
+        newsComponentArray.unshift(
+
+            <LatestNewsLine dateTime={eventOfNews.date} key={eventOfNews.date + keyOfNews}>
+                {eventOfNews.content}
+            </LatestNewsLine>
+        )
+    }
+}
+
+
+
+
 
 export default function Home(props) {
 
@@ -47,12 +68,7 @@ export default function Home(props) {
                     <LatestNewsLine>
                         <b style={{ fontWeight: 900, fontSize: "28px" }}>Latest News</b>  <span style={{ fontWeight: 700, fontSize: "18px" }}> (<MyLink href="/#/news">more</MyLink>) </span>
                     </LatestNewsLine>
-                    <LatestNewsLine dateTime="Jan. 14, 2022">
-                        Two papers accepted to TheWebConf 2022. Big congraduations to Zhensu and Guosheng.
-                    </LatestNewsLine> 
-                    <LatestNewsLine dateTime="Dec. 6, 2021">
-                        Four papers accepted to ICSE 2022 (ICSE is the best conference in Software Engineering).
-                    </LatestNewsLine>   
+                    {newsComponentArray}
                 </Grid>
 
                 <Grid xs={12} item container style={{ padding: "15px" }} >
@@ -79,18 +95,18 @@ export default function Home(props) {
                         </Grid>
                         <Grid xs={12} item container>
                             <Typography align="justify" style={{ fontWeight: "18px" }}>
-                            SMAT Lab (SMart software Analysis and Trustworthy computing Lab) is part of the Software Engineering group at Monash University, Australia. 
-                            The lab is led by Dr. Li Li (ARC DECRA Fellow 2020). 
-                            We are interested in developing practical techniques to assure software quality and secure software systems for social good.
-                            In particular, our research mainly lies in the following directions:
-                            <br />
-                            <b>Mobile Software Engineering</b>
-                            <br />
-                            * Mobile Security <br />
-                            * Mobile App Quality Assurance <br />
-                            <b>Intelligent Software Engineering</b> <br />
-                            * Artificial Intelligence for Software Engineering (AI4SE) <br />
-                            * Software Engineering for Artificial Intelligence (SE4AI) </Typography>
+                                SMAT Lab (SMart software Analysis and Trustworthy computing Lab) is part of the Software Engineering group at Monash University, Australia.
+                                The lab is led by Dr. Li Li (ARC DECRA Fellow 2020).
+                                We are interested in developing practical techniques to assure software quality and secure software systems for social good.
+                                In particular, our research mainly lies in the following directions:
+                                <br />
+                                <b>Mobile Software Engineering</b>
+                                <br />
+                                * Mobile Security <br />
+                                * Mobile App Quality Assurance <br />
+                                <b>Intelligent Software Engineering</b> <br />
+                                * Artificial Intelligence for Software Engineering (AI4SE) <br />
+                                * Software Engineering for Artificial Intelligence (SE4AI) </Typography>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -102,7 +118,7 @@ export default function Home(props) {
 function LatestNewsLine(props) {
     return (
         <Grid xs={12} item container style={{ paddingBottom: "13px" }} >
-            <Typography align="justify" > {props.dateTime&&<b>[{props.dateTime}]</b>} {props.children}</Typography>
+            <Typography align="justify" > {props.dateTime && <b>[{props.dateTime}]</b>} {props.children}</Typography>
         </Grid>
     )
 }
