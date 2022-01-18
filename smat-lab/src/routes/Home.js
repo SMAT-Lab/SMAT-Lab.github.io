@@ -11,19 +11,27 @@ import AllNews from '../utility/news/AllNews';
 
 
 
-
-var newsComponentArray = []
-for (var keyOfNews in AllNews) {
-    for (var index = AllNews[keyOfNews].length - 1; index >= 0; index--) {
-        var eventOfNews = AllNews[keyOfNews][index]
-        newsComponentArray.unshift(
-
-            <LatestNewsLine dateTime={eventOfNews.date} key={eventOfNews.date + keyOfNews}>
-                {eventOfNews.content}
-            </LatestNewsLine>
-        )
+function getComponentArray(){
+    for (var keyOfNews in AllNews) {
+        for (var index = AllNews[keyOfNews].length - 1; index >= 0; index--) {
+            var eventOfNews = AllNews[keyOfNews][index]
+            newsComponentArray.unshift(
+    
+                <LatestNewsLine dateTime={eventOfNews.date} key={eventOfNews.date + keyOfNews}>
+                    {eventOfNews.content}
+                </LatestNewsLine>
+            )
+            if(eventOfNews.length>4){
+                return eventOfNews
+            }
+        }
     }
 }
+
+var newsComponentArray = []
+getComponentArray()
+
+
 
 
 
