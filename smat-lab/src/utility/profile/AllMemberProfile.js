@@ -37,7 +37,7 @@ const AllMemberProfile = {
         "nameDisplayed":"Pei Liu",
         "nameLink":"https://github.com/gspeiliu", 
         "description":"PhD Student of Monash",
-        "profileDirectory":require("../../utility/profile/pic/peiliu.jpg")
+        "profileDirectory":require("../../utility/profile/pic/peiliu.png")
     },
     "Xiaoyu Sun":{
         "nameDisplayed":"Xiaoyu Sun",
