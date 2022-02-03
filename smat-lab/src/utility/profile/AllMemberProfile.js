@@ -15,7 +15,7 @@ const AllMemberProfile = {
         "nameDisplayed":"Yonghui Liu",
         "nameLink":"https://github.com/DannyGooo", 
         "description":"Master Student of Monash",
-        "profileDirectory":require("../../utility/profile/pic/Yonghui_Liu.jpg")
+        "profileDirectory":require("../../utility/profile/pic/Yonghui.Liu.png")
     },
     "Tianming Liu":{
         "nameDisplayed":"Tianming Liu",
@@ -30,6 +30,7 @@ const AllMemberProfile = {
     },
     "Jiawei Wang":{
         "nameDisplayed":"Jiawei Wang",
+        "nameLink":"https://scholar.google.com/citations?user=jxAaupQAAAAJ&hl=en&oi=ao",
         "description":"PhD Student of Monash",
         "profileDirectory":''
     },
@@ -55,7 +56,7 @@ const AllMemberProfile = {
         "nameDisplayed":"Mingyi Zhou",
         "description":"PhD Student of Monash",
         "nameLink":"https://github.com/zhoumingyi", 
-        "profileDirectory": require("../../utility/profile/pic/mingyi.zhou.jpg")
+        "profileDirectory": require("../../utility/profile/pic/mingyi.zhou.png")
     },
     "Md Shamsujjoha":{
         "nameDisplayed":"Md Shamsujjoha",
