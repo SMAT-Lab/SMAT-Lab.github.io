@@ -12,7 +12,7 @@ export default function Publication(props) {
     return (
         <PageWrapper showDivider={true} title="Publications of Our Group">
 
-            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 4, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 4, POPL * 1, PLDI * 1, TheWebConf * 5"></SubPageWrapper>
+            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 4, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 4, POPL * 1, PLDI * 1, TheWebConf * 5, ACL * 1"></SubPageWrapper>
 
             <SubPageWrapper title="ACM TOSEM">
                 
@@ -95,6 +95,10 @@ export default function Publication(props) {
                 <MyLi>Yuhao Gao, Haoyu Wang, Li Li, Xiapu Luo, Xuanzhe Liu and Guoai Xu, Demystifying Illegal Mobile Gambling Apps, The Web Conference 2021 (WWW 2021), 2021</MyLi>
                 <MyLi>Tianming Liu, Haoyu Wang, Li Li, Xiapu Luo, Feng Dong, Yao Guo, Liu Wang, Tegawendé F. Bissyandé and Jacques Klein, MadDroid: Characterising and Detecting Devious Ad Content for Android Apps, The Web Conference 2020 (WWW 2020), 2020</MyLi>
                 <MyLi>Yangyu Hu, Haoyu Wang, Ren He, Li Li, Gareth Tyson, Ignacio Castro, Yao Guo, Lei Wu, and Guoai Xu, Mobile App Squatting, The Web Conference 2020 (WWW 2020), 2020</MyLi>
+            </SubPageWrapper>
+
+            <SubPageWrapper title="ACL">
+                <MyLi>Juncai Guo, Jin Liu, Yao Wan, Li Li, Pingyi Zhou, Modeling Hierarchical Syntax Structure with Triplet Position for Source Code Summarization, The 60th Annual Meeting of the Association for Computational Linguistics (ACL 2022), 2022</MyLi>
             </SubPageWrapper>
 
         </PageWrapper>
