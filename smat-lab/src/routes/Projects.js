@@ -46,6 +46,21 @@ export default function Projects(props) {
                 <b>URL:</b> <MyLink href="http://appscanner.com.au/">http://appscanner.com.au/</MyLink>
             </SubPageWrapper>
 
+            <SubPageWrapper 
+                title="AndroZooOpen: Large-scale Open Source Android Apps for the Research Community" 
+                isProject
+                image={require("../utility/project/pic/androzooopen.jpg")}
+                imageHeight='210px'
+            >
+
+                AndroZooOpen is a growing collection of Open-Source Android Applications collected from 
+                several sources, including Github, Gitlab and Bitbucket. It currently contains 77,406
+                different projects. We provide this dataset to contribute to ongoing research efforts, 
+                as well as to enable new potential research topics on Android Apps.
+                <br />
+                <b>URL:</b> <MyLink href="https://github.com/SMAT-Lab/AndroZooOpen">https://github.com/SMAT-Lab/AndroZooOpen</MyLink>
+            </SubPageWrapper>
+
             
         </PageWrapper>
 
