@@ -12,7 +12,7 @@ export default function Publication(props) {
     return (
         <PageWrapper showDivider={true} title="Publications of Our Group">
 
-            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 4, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 4, POPL * 1, PLDI * 1, TheWebConf * 5, ACL * 1"></SubPageWrapper>
+            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 4, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 5, POPL * 1, PLDI * 1, TheWebConf * 5, ACL * 1"></SubPageWrapper>
 
             <SubPageWrapper title="ACM TOSEM">
                 
@@ -75,6 +75,7 @@ export default function Publication(props) {
             </SubPageWrapper>
 
             <SubPageWrapper title="ISSTA">
+                <MyLi>Pei Liu, Yanjie Zhao, Haipeng Cai, Mattia Fazzini, John Grundy, and Li Li, Automatically Detecting API-induced Compatibility Issues in Android Apps: A Reproducibility Study, The ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2022), 2022</MyLi>
                 <MyLi>Pingfan Kong, Li Li, Jun Gao, Tegawendé Bissyandé, Jacques Klein, Mining Android Crash Fixes in the Absence of Issue- and Change-Tracking Systems, The 28th ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2019), 2019</MyLi>
                 <MyLi>Haipeng Cai, Ziyi Zhang, Li Li, Xiaoqin Fu, A Large-Scale Study of Application Incompatibilities in Android, The 28th ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2019), 2019</MyLi>
                 <MyLi>Li Li, Tegawendé F. Bissyandé, Haoyu Wang and Jacques Klein, CiD: Automating the Detection of API-related Compatibility Issues in Android Apps, The ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2018), 2018</MyLi>
