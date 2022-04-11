@@ -1,6 +1,10 @@
 const AllNews = {
     "2022": [
         {
+            "date": "Apr. 8, 2022",
+            "content": "One paper accepted to ISSTA 2022. Big congratulations to our PhD students Pei Liu and Yanjie Zhao."
+        },
+        {
             "date": "Feb. 24, 2022",
             "content": "One paper accepted to ACL 2022, one of the best venues in Natural Language Processing. Big congratulations to our visiting student Juncai Guo."
         },
@@ -10,7 +14,7 @@ const AllNews = {
         },
         {
             "date": "Jan. 14, 2022",
-            "content": "Two papers accepted to TheWebConf 2022. Big congraduations to Zhensu and Guosheng.",
+            "content": "Two papers accepted to TheWebConf 2022. Big congratulations to Zhensu and Guosheng.",
         }
     ],
     "2021": [
