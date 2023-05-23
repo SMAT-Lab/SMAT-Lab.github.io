@@ -1,8 +1,12 @@
 const AllNews = {
     "2023": [
         {
-            "date": "June. 2023",
+            "date": "May. 2023",
             "content": "Xiaoyu Sun became Assistant Professor at Australian National University (ANU)."
+        },
+        {
+            "date": "Mar. 2023",
+            "content": "Prof. Li Li has been elected to the Ric Holt Early Career Achievement Award 2023."
         }
     ],
     "2022": [
