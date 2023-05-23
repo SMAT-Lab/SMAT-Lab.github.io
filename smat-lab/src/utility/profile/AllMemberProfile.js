@@ -2,19 +2,19 @@ const AllMemberProfile = {
     "Li Li":{
         "nameDisplayed":"Li Li",
         "nameLink":"https://lilicoding.github.io/", 
-        "description":"Senior Lecturer",
+        "description":"Professor at BUAA",
         "profileDirectory":"https://raw.githubusercontent.com/lilicoding/lilicoding.github.io/master/images/lili.png",       
     },
     "Xiao Chen":{
         "nameDisplayed":"Xiao Chen",
         "nameLink":"https://research.monash.edu/en/persons/xiao-chen", 
-        "description":"Research Fellow",
+        "description":"Research Fellow at Monash University",
         "profileDirectory":require("../../utility/profile/pic/xiaochen.jpg")
     },
     "Yonghui Liu":{
         "nameDisplayed":"Yonghui Liu",
         "nameLink":"https://github.com/DannyGooo", 
-        "description":"MPhil Student of Monash",
+        "description":"PhD Student of Monash",
         "profileDirectory":require("../../utility/profile/pic/Yonghui.Liu.png")
     },
     "Tianming Liu":{
@@ -37,19 +37,19 @@ const AllMemberProfile = {
     },
     "Pei Liu":{
         "nameDisplayed":"Pei Liu",
-        "nameLink":"https://github.com/gspeiliu", 
+        "nameLink":"https://gspeiliu.github.io/", 
         "description":"PhD Student of Monash",
         "profileDirectory":require("../../utility/profile/pic/peiliu.png")
     },
     "Xiaoyu Sun":{
         "nameDisplayed":"Xiaoyu Sun",
         "nameLink":"https://sunxiaobiu.github.io/", 
-        "description":"PhD Student of Monash",
+        "description":"Assistant Professor at ANU",
         "profileDirectory":require("../../utility/profile/pic/Xiaoyu.sun.jpeg")
     },
     "Yanjie Zhao":{
         "nameDisplayed":"Yanjie Zhao",
-        "nameLink":"https://github.com/carol233", 
+        "nameLink":"https://yanjiezhao96.github.io/", 
         "description":"PhD Student of Monash",
         "profileDirectory":require("../../utility/profile/pic/Yanjie.Zhao.png")
     },

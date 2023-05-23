@@ -14,6 +14,7 @@ export default function People(props) {
             <SubPageWrapper title="Faculty/Researchers" profile={true}>
                 <MyProfile name="Li Li"/>
                 <MyProfile name="Xiao Chen"/>
+                <MyProfile name="Xiaoyu Sun"/>
             </SubPageWrapper>
 
             <SubPageWrapper title="Postgraduate Students" profile={true}>
@@ -24,8 +25,7 @@ export default function People(props) {
                 <MyProfile name="Tianming Liu"/>
                 <MyProfile name="Jiawei Wang"/>
                 <MyProfile name="Pei Liu"/>
-                <MyProfile name="Yanjie Zhao"/>
-                <MyProfile name="Xiaoyu Sun"/>
+                <MyProfile name="Yanjie Zhao"/>                
                 <MyProfile name="Md Shamsujjoha"/>
             </SubPageWrapper>
 

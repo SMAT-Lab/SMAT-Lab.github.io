@@ -14,8 +14,7 @@ export default function Publication(props) {
 
             <SubPageWrapper title="Summary: TOSEM * 3, TSE * 4, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 5, POPL * 1, PLDI * 1, TheWebConf * 5, ACL * 1"></SubPageWrapper>
 
-            <SubPageWrapper title="ACM TOSEM">
-                
+            <SubPageWrapper title="ACM TOSEM">                
                 <MyLi>
                 Yanjie Zhao, Li Li, Haoyu Wang, Haipeng Cai, Tegawendé F. Bissyandé, Jacques Klein and John Grundy, On the Impact of Sample Duplication in Machine Learning based Android Malware Detection, ACM Transactions on Software Engineering and Methodology (TOSEM), 2021
                 </MyLi>
