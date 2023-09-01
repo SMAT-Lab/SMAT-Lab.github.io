@@ -69,7 +69,7 @@ export default function Publication(props) {
 
             <SubPageWrapper title="IEEE TIFS">
                 <MyLi>
-                Li Li, Daoyuan Li, Tegawend{\'e} F. Bissyand{\'e}, Jacques Klein, Yves Le Traon, David Lo and Lorenzo Cavallaro, Understanding Android App Piggybacking: A Systematic Study of Malicious Code Grafting, IEEE Transactions on Information Forensics \& Security (TIFS), 2017
+                Li Li, Daoyuan Li, Tegawendé F. Bissyandé, Jacques Klein, Yves Le Traon, David Lo and Lorenzo Cavallaro, Understanding Android App Piggybacking: A Systematic Study of Malicious Code Grafting, IEEE Transactions on Information Forensics \& Security (TIFS), 2017
                 </MyLi>
                
             </SubPageWrapper>
