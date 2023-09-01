@@ -12,11 +12,23 @@ export default function Publication(props) {
     return (
         <PageWrapper showDivider={true} title="Publications of Our Group">
 
-            <SubPageWrapper title="Summary: TOSEM * 3, TSE * 4, TDSC * 1, TIFS * 1, ICSE * 9, ESEC/FSE * 4, ASE * 6, ISSTA * 5, POPL * 1, PLDI * 1, TheWebConf * 5, ACL * 1"></SubPageWrapper>
+            <SubPageWrapper title="Summary: TOSEM * 7, TSE * 5, TDSC * 2, TIFS * 1, ICSE * 9, ESEC/FSE * 8, ASE * 8, ISSTA * 6, POPL * 1, PLDI * 1, TheWebConf * 6, ACL * 1"></SubPageWrapper>
 
-            <SubPageWrapper title="ACM TOSEM">                
+            <SubPageWrapper title="ACM TOSEM">
+                <MyLi>
+                Pei Liu, Yanjie Zhao, Mattia Fazzini, Haipeng Cai, John Grundy, and Li Li, Automatically Detecting Incompatible Android APIs, ACM Transactions on Software Engineering and Methodology (TOSEM), 2023
+                </MyLi>
+                <MyLi>
+                Kui Liu, Jingtang Zhang, Li Li, Anil Koyuncu, Dongsun Kim, Chunpeng Ge, Zhe Liu, Jacques Klein, Tegawende Bissyande, Reliable Fix Patterns Inferred from Static Checkers for Automated Program Repair, ACM Transactions on Software Engineering and Methodology (TOSEM), 2023
+                </MyLi>
                 <MyLi>
                 Yanjie Zhao, Li Li, Haoyu Wang, Haipeng Cai, Tegawendé F. Bissyandé, Jacques Klein and John Grundy, On the Impact of Sample Duplication in Machine Learning based Android Malware Detection, ACM Transactions on Software Engineering and Methodology (TOSEM), 2021
+                </MyLi>
+                <MyLi>
+                Xiaoyu Sun, Xiao Chen, Li Li, Haipeng Cai, John Grundy, Jordan Samhi, Tegawendé F. Bissyandé and Jacques Klein, Demystifying Hidden Sensitive Operations in Android apps, ACM Transactions on Software Engineering and Methodology (TOSEM), 2022
+                </MyLi>
+                <MyLi>
+                Haoye Tian, Kui Liu, Yinghua Li, Abdoul Kader Kaboré, Anil Koyuncu, Andrew Habib, Li Li, Junhao Wen, Jacques Klein, Tegawendé F. Bissyandé, The Best of Both Worlds: Combining Learned Embeddings with Engineered Features for Accurate Prediction of Correct Patches, ACM Transactions on Software Engineering and Methodology (TOSEM), 2022
                 </MyLi>
                 <MyLi>
                 Xiaoyu Sun, Li Li, Tegawendé F. Bissyandé, Jacques Klein, Damien Octeau, John Grundy, Taming Reflection: An Essential Step Towards Whole-Program Analysis of Android Apps, ACM Transactions on Software Engineering and Methodology (TOSEM), 2020
@@ -28,6 +40,9 @@ export default function Publication(props) {
             </SubPageWrapper>
             <SubPageWrapper title="IEEE TSE">
                 <MyLi>
+                Xiaoyu Sun, Xiao Chen, Yonghui Liu, John Grundy and Li Li, Taming Android Fragmentation through Lightweight Crowdsourced Testing, IEEE Transactions on Software Engineering (TSE), 2023
+                </MyLi>
+                <MyLi>
                 Yanjie Zhao, Li Li, Haoyu Wang, Qiang He, and John Grundy, APIMatchmaker: Matching the Right APIs for Supporting the Development of Android Apps, IEEE Transactions on Software Engineering (TSE), 2022
                 </MyLi>
                 <MyLi>
@@ -38,6 +53,23 @@ export default function Publication(props) {
                 </MyLi>
                 <MyLi>
                 Li Li, Tegawendé F. Bissyandé, Jacques Klein, Rebooting Research on Detecting Repackaged Android Apps: Literature Review and Benchmark, IEEE Transactions on Software Engineering (TSE), 2019
+                </MyLi>
+               
+            </SubPageWrapper>
+
+            <SubPageWrapper title="IEEE TDSC">
+                <MyLi>
+                Lihong Tang, Tingmin Wu, Xiao Chen, Li Li, Xin Xia, Marthie Grobler, Yang Xiang. “How does Visualisation Help App Practitioners Analyse Android Apps?”. In IEEE Transactions on Dependable and Secure Computing (TDSC), 2022
+                </MyLi>
+                <MyLi>
+                Yangyu Hu, Haoyu Wang, Yajin Zhou, Yao Guo, Li Li, Bingxuan Luo, Fangren Xu, Dating with Scambots: Understanding the Ecosystem of Fraudulent Dating Applications, IEEE Transactions on Dependable and Secure Computing (TDSC), 2019
+                </MyLi>
+               
+            </SubPageWrapper>
+
+            <SubPageWrapper title="IEEE TIFS">
+                <MyLi>
+                Li Li, Daoyuan Li, Tegawend{\'e} F. Bissyand{\'e}, Jacques Klein, Yves Le Traon, David Lo and Lorenzo Cavallaro, Understanding Android App Piggybacking: A Systematic Study of Malicious Code Grafting, IEEE Transactions on Information Forensics \& Security (TIFS), 2017
                 </MyLi>
                
             </SubPageWrapper>
@@ -58,6 +90,10 @@ export default function Publication(props) {
             </SubPageWrapper>
 
             <SubPageWrapper title="ESEC/FSE">
+                <MyLi>Zhensu Sun, Xiaoning Du, Fu Song, Li Li, CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models, The ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2023)</MyLi>
+                <MyLi>Shangwen Wang, Mingyang Geng, Bo Lin, Zhensu Sun, Ming Wen, Yepang Liu, Li Li, Tegawendé F. Bissyandé, Xiaoguang Mao, Natural Language to Code: How Far are We? The ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2023)</MyLi>
+                <MyLi>Yuhao Gao, Guoai Xu, Li Li, Xiapu Luo, Chenyu Wang, and Yulei Sui, Demystifying the Underground Ecosystem of Account Registration Bots, ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2022), 2022</MyLi>
+                <MyLi>Wen Li, Li Li, and Haipeng Cai, On the Vulnerability Proneness of Multilingual Code, ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2022), 2022</MyLi>
                 <MyLi>Bo Li, Qiang He, Feifei Chen, Xin Xia, Li Li, John Grundy, Yun Yang, Embedding App-Library Graph for Neural Third Party Library Recommendation, The 29th ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2021), 2021</MyLi>
                 <MyLi>Jiawei Wang, Li Li, Kui Liu, Haipeng Cai, Exploring How Deprecated Python Library APIs are (Not) Handled, The 28th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2020), 2020</MyLi>
                 <MyLi>Jun Gao, Li Li, Pingfan Kong, Tegawendé F. Bissyandé and Jacques Klein, Borrowing Your Enemy’s Arrows: the Case of Code Reuse in Android via Direct Inter-app Code Invocation, The 28th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2020), 2020</MyLi>
@@ -65,6 +101,9 @@ export default function Publication(props) {
             </SubPageWrapper>
 
             <SubPageWrapper title="ASE">
+                <MyLi>Yonghui Liu, Xiao Chen, Pei Liu, John Grundy, Chunyang Chen, Li Li, ReuNify: A Step Towards Whole Program Analysis for React Native Android App, The 38th IEEE/ACM
+International Conference on Automated Software Engineering (ASE2023)</MyLi>
+                <MyLi>Xiaoyu Sun, Xiao Chen, Yanjie Zhao, Pei Liu, John Grundy and Li Li, Mining Android API Usage to Generate Unit Test Cases for Pinpointing Compatibility Issues, The 37th IEEE/ACM International Conference on Automated Software Engineering (ASE 2022), 2022</MyLi>
                 <MyLi>Jiawei Wang, Tzu-yang Kuo, Li Li, Andreas Zeller, Assessing and Restoring Reproducibility of Jupyter Notebooks, The 35th IEEE/ACM International Conference on Automated Software Engineering (ASE 2020), 2020</MyLi>
                 <MyLi>Xin Wang, Jin Liu, Li Li, Xiao Chen, Xiao Liu, Hao Wu, Detecting and Explaining Self-Admitted Technical Debts with Attention-based Neural Networks, The 35th IEEE/ACM International Conference on Automated Software Engineering (ASE 2020), 2020</MyLi>
                 <MyLi>Haoye Tian, Kui Liu, Abdoul Kader Kaboré, Anil Koyuncu, Li Li, Jacques Klein, Tegawendé F. Bissyandé, Evaluating Representation Learning of Code Changes for Predicting Patch Correctness in Program Repair, The 35th IEEE/ACM International Conference on Automated Software Engineering (ASE 2020), 2020</MyLi>
@@ -74,6 +113,7 @@ export default function Publication(props) {
             </SubPageWrapper>
 
             <SubPageWrapper title="ISSTA">
+                <MyLi>Mingyi Zhou, Xiang Gao, Jing Wu, John Grundy, Xiao Chen, Chunyang Chen, Li Li, ModelObfuscator: Obfuscating Model Information to Protect Deployed ML-based Systems, The ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2023)</MyLi>
                 <MyLi>Pei Liu, Yanjie Zhao, Haipeng Cai, Mattia Fazzini, John Grundy, and Li Li, Automatically Detecting API-induced Compatibility Issues in Android Apps: A Reproducibility Study, The ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2022), 2022</MyLi>
                 <MyLi>Pingfan Kong, Li Li, Jun Gao, Tegawendé Bissyandé, Jacques Klein, Mining Android Crash Fixes in the Absence of Issue- and Change-Tracking Systems, The 28th ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2019), 2019</MyLi>
                 <MyLi>Haipeng Cai, Ziyi Zhang, Li Li, Xiaoqin Fu, A Large-Scale Study of Application Incompatibilities in Android, The 28th ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA 2019), 2019</MyLi>
@@ -90,6 +130,7 @@ export default function Publication(props) {
             </SubPageWrapper>
 
             <SubPageWrapper title="TheWebConf (WWW)">
+                <MyLi>Yanjie Zhao, Tianming Liu, Haoyu Wang, Yepang Liu, John Grundy, and Li Li, Are Mobile Advertisements in Compliance with App's Age Group? The ACM Web Conference (WWW 2023)</MyLi>
                 <MyLi>Zhensu Sun, Xiaoning Du, Fu Song, Mingze Ni and Li Li, CoProtector: Protect Open-Source Code against Unauthorized Training Usage with Data Poisoning, The ACM Web Conference (WWW 2022), 2022</MyLi>
                 <MyLi>Guosheng Xu, Siyi Li, Hao Zhou, Shucen Liu, Yutian Tang, Li Li, Xiapu Luo, Xusheng Xiao, Guoai Xu and Haoyu Wang, Lie to Me: Abusing the Mobile Content Sharing Service for Fun and Profit, The ACM Web Conference (WWW 2022), 2022</MyLi>
                 <MyLi>Yuhao Gao, Haoyu Wang, Li Li, Xiapu Luo, Xuanzhe Liu and Guoai Xu, Demystifying Illegal Mobile Gambling Apps, The Web Conference 2021 (WWW 2021), 2021</MyLi>
