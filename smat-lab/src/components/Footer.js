@@ -6,7 +6,7 @@ export default function Footer() {
         <footer style={{ backgroundColor: "#fafafa", marginTop: "40px", padding: "10px 0" }}>
             <div >
                 <Typography align="center" style={{height: "20px"}}>
-                    SMAT Lab @ MONASH
+                    SMAT Lab @ Beihang
                 </Typography>
             </div>
         </footer>

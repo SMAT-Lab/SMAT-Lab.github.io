@@ -2,13 +2,13 @@ const AllMemberProfile = {
     "Li Li":{
         "nameDisplayed":"Li Li",
         "nameLink":"https://lilicoding.github.io/", 
-        "description":"Professor at BUAA",
+        "description":"Professor at Beihang",
         "profileDirectory":"https://raw.githubusercontent.com/lilicoding/lilicoding.github.io/master/images/lili.png",       
     },
     "Xiao Chen":{
         "nameDisplayed":"Xiao Chen",
         "nameLink":"https://research.monash.edu/en/persons/xiao-chen", 
-        "description":"Research Fellow at Monash University",
+        "description":"Assistant Professor at NewCastle",
         "profileDirectory":require("../../utility/profile/pic/xiaochen.jpg")
     },
     "Yonghui Liu":{

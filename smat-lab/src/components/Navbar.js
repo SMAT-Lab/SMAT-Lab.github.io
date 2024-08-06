@@ -113,7 +113,7 @@ export default function Navbar(props) {
 
                 <Grid container item alignItems="center" style={{ maxWidth: '1344px', height: "100%", padding: "0 15px" }}>
                     <Grid container item xs={3} justifyContent="flex-start" >
-                        <Typography style={{ fontWeight: "900", fontSize: "20px", color: "white", minWidth: "230px" }}>SMAT Lab@MONASH</Typography>
+                        <Typography style={{ fontWeight: "900", fontSize: "20px", color: "white", minWidth: "230px" }}>SMAT Lab@Beihang</Typography>
                     </Grid>
 
                     <Grid container item xs={9} justifyContent="flex-end" style={{ height: "100%" }}>
